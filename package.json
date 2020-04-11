@@ -1,0 +1,11 @@
+
+{                                                                                
+  "name": "be.eloistree.javaopenmacroudp",                              
+  "displayName": "JavaOpenMacroUDP",                        
+  "version": "0.0.1",                         
+  "unity": "2018.1",                             
+  "description": "You package description",                         
+  "keywords": ["Script","Tool"],                       
+  "category": "Script",                   
+  "dependencies":{}     
+} 
