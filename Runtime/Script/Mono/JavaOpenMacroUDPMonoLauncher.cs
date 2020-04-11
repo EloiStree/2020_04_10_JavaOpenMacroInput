@@ -7,50 +7,53 @@ using System.Text;
 using System.Threading;
 using UnityEngine;
 
-
-public class JavaOpenMacroUDPMonoLauncher : MonoBehaviour
+namespace JavaOpenMacroInput
 {
-    public JavaOpenMacroCommunicationProcess m_process;
-    public string m_ip = "127.0.0.1";
-    public int m_port = 2510;
-    public System.Threading.ThreadPriority m_threadPrioity = System.Threading.ThreadPriority.Normal;
-    public bool m_autoStart=true;
-    [Header("Debug")]
-    public int m_leftToSend = 0;
-    public string m_lastSend;
-    [TextArea(1,5)]
-    public string m_exceptionCatch;
-    private void OnEnable()
+
+    public class JavaOpenMacroUDPMonoLauncher : MonoBehaviour
     {
-        if (m_autoStart)
+        public JavaOpenMacroCommunicationProcess m_process;
+        public string m_ip = "127.0.0.1";
+        public int m_port = 2510;
+        public System.Threading.ThreadPriority m_threadPrioity = System.Threading.ThreadPriority.Normal;
+        public bool m_autoStart = true;
+        [Header("Debug")]
+        public int m_leftToSend = 0;
+        public string m_lastSend;
+        [TextArea(1, 5)]
+        public string m_exceptionCatch;
+        private void OnEnable()
         {
-            StartThreadWith(m_ip, m_port, m_threadPrioity);
+            if (m_autoStart)
+            {
+                StartThreadWith(m_ip, m_port, m_threadPrioity);
+            }
+
         }
-
-    }
-    private void OnDisable()
-    {
-        m_process.KillJavaThreadWhenDone();
-        m_process.KillWhenPossible();
-    }
-    public void Update()
-    {
-        m_leftToSend = m_process.GetLeftMessagesToSend();
-        m_lastSend = m_process.GetLastSendMessage();
-        m_exceptionCatch = m_process.GetLastSendMessage();
-    }
-
-   
-    public void StartThreadWith(string ip, int port, System.Threading.ThreadPriority priority) {
-        if (m_process != null) {
+        private void OnDisable()
+        {
+            m_process.KillJavaThreadWhenDone();
             m_process.KillWhenPossible();
         }
-        m_process = new JavaOpenMacroCommunicationProcess(ip, port, priority);
-    }
-  
+        public void Update()
+        {
+            m_leftToSend = m_process.GetLeftMessagesToSend();
+            m_lastSend = m_process.GetLastSendMessage();
+            m_exceptionCatch = m_process.GetLastSendMessage();
+        }
 
+
+        public void StartThreadWith(string ip, int port, System.Threading.ThreadPriority priority)
+        {
+            if (m_process != null)
+            {
+                m_process.KillWhenPossible();
+            }
+            m_process = new JavaOpenMacroCommunicationProcess(ip, port, priority);
+        }
+
+
+
+    }
 
 }
-public enum JavaMouseButton : int { BUTTON1_DOWN_MASK=0, BUTTON2_DOWN_MASK = 1, BUTTON3_DOWN_MASK = 2 }
-
- 

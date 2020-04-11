@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-
+namespace JavaOpenMacroInput { 
 public class JavaOMI {
 
     public static JavaOMI CreateShortcutFromFirstProcessRunning()
@@ -223,4 +223,4 @@ public class JavaOpenMacroCommunicationProcess
 
     }
 }
-public enum PressType { Press, Release, Stroke }
+}
