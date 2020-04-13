@@ -5,7 +5,8 @@ namespace JavaOpenMacroInput
     public enum JavaMouseButton : int { BUTTON1_DOWN_MASK = 0, BUTTON2_DOWN_MASK = 1, BUTTON3_DOWN_MASK = 2 }
     public enum JavaKeyEvent : int
     {
-        VK_ENTERVK_BACK_SPACE,
+        VK_ENTER,
+        VK_BACK_SPACE,
         VK_TAB,
         VK_CANCEL,
         VK_CLEAR,
