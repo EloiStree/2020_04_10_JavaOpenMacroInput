@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
@@ -21,9 +22,32 @@ public class JavaOMI {
         m_linkedProcessUse = processUse;
     }
 
-   
 
-    public void Keyboard(JavaKeyEvent key, PressType press = PressType.Stroke)
+    public void PastText(string text, out bool guarantyTextNotAttered) {
+            int byteCount = Encoding.ASCII.GetBytes(text).Length;
+
+            guarantyTextNotAttered = byteCount < 8000;
+            if (guarantyTextNotAttered)
+                m_linkedProcessUse.SendTextToCopyPast(text);
+            else {
+                foreach (var item in ChunksUpto(text, 8000))
+                {
+                    m_linkedProcessUse.SendTextToCopyPast(item);
+
+                }
+            }
+
+           
+
+
+        }
+        static IEnumerable<string> ChunksUpto(string str, int maxChunkSize)
+        {
+            for (int i = 0; i < str.Length; i += maxChunkSize)
+                yield return str.Substring(i, Math.Min(maxChunkSize, str.Length - i));
+        }
+
+        public void Keyboard(JavaKeyEvent key, PressType press = PressType.Stroke)
     {
         m_linkedProcessUse.Send(key, press);
 
@@ -158,6 +182,10 @@ public class JavaOpenMacroCommunicationProcess
     public void Send(string msg)
     {
         m_toSend.Enqueue(msg);
+    }
+
+    public void SendTextToCopyPast(string text) {
+      m_toSend.Enqueue( text);
     }
     public void Send(JavaKeyEvent keyToType, PressType press)
     {
