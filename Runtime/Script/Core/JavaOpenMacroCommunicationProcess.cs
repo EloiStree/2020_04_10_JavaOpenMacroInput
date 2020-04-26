@@ -4,14 +4,33 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-namespace JavaOpenMacroInput { 
-public class JavaOMI {
+using UnityEngine.UI;
 
-    public static JavaOMI CreateShortcutFromFirstProcessRunning()
-    {
-        return new JavaOMI(JavaOpenMacroCommunicationProcess.GetFirstCreatedProcess());
-    }
-    public static JavaOMI CreateDefaultOne(int port =2501)
+namespace JavaOpenMacroInput {
+    public class JavaOMI {
+
+        public static JavaOMI CreateShortcutFromFirstProcessRunning()
+        {
+            return new JavaOMI(JavaOpenMacroCommunicationProcess.GetFirstCreatedProcess());
+        }
+
+        public delegate void OnRunningNamedThreadEvent(string runningThreadName);
+        private static OnRunningNamedThreadEvent m_onThreadChange;
+        public static void RemoveRegisterListener(OnRunningNamedThreadEvent toDo)
+        {
+            m_onThreadChange -= toDo;
+        }
+
+        public static void AddRegisterListener(OnRunningNamedThreadEvent toDo)
+        {
+            m_onThreadChange += toDo;
+        }
+        private static void NotifyThreadChange(string affectedThread) {
+            if(m_onThreadChange!=null)
+                m_onThreadChange(affectedThread);
+        }
+
+        public static JavaOMI CreateDefaultOne(int port =2501)
     {
         JavaOMI jomi;
         JavaOpenMacroCommunicationProcess.CreateDefaultOne(out jomi, port);
@@ -47,12 +66,78 @@ public class JavaOMI {
                 yield return str.Substring(i, Math.Min(maxChunkSize, str.Length - i));
         }
 
-        public void Keyboard(JavaKeyEvent key, PressType press = PressType.Stroke)
-    {
-        m_linkedProcessUse.Send(key, press);
+       
 
-    }
-    public void MouseMove(int x, int y)
+        public void StopThread()
+        {
+            m_linkedProcessUse.KillWhenPossible();
+        }
+
+        public void Keyboard(JavaKeyEvent key, PressType press = PressType.Stroke)
+        {
+            m_linkedProcessUse.Send(key, press);
+
+        }
+
+
+        private static Dictionary<string, JavaOMI> m_readyToUseRegister = new Dictionary<string, JavaOMI>();
+        public static bool IsServerRegistered(string name)
+        {
+            return m_readyToUseRegister.ContainsKey(name);
+        }
+
+        public static JavaOMI GetRegistered(string name)
+        {
+            if (IsServerRegistered(name))
+                return m_readyToUseRegister[name];    
+            return null;
+        }
+
+
+        //public static void RenameRegistered(string oldName, string newName, out bool findAndRenamed)
+        //{
+
+        //    findAndRenamed = false;
+        //    JavaOMI server = GetRegistered(oldName);
+        //    if (server != null) {
+        //        m_readyToUseRegister.Add(newName, server);
+        //        m_readyToUseRegister.Remove(oldName);
+        //        findAndRenamed = true; 
+        //        NotifyThreadChange(newName);
+        //    }
+
+        //}
+
+        public static void RegisterShortcut(string name, JavaOMI running, bool overrideExistingOne=true)
+        {
+            if (!IsServerRegistered(name)) {
+                m_readyToUseRegister.Add(name, running);
+
+            }
+            else if (overrideExistingOne)
+                m_readyToUseRegister[name] = running;
+
+            NotifyThreadChange(name);
+        }
+        public static void UnregisterShortcut(string name)
+        {
+            if (IsServerRegistered(name))
+            {
+                m_readyToUseRegister.Remove(name);
+                NotifyThreadChange(name);
+            }
+        }
+        public static string [] GetAllRunningNameRegistered() {
+            return m_readyToUseRegister.Keys.ToArray();
+        }
+
+        public void SetPause(bool isOnPause)
+        {
+            m_linkedProcessUse.SetAsPause(isOnPause);
+        }
+
+
+        public void MouseMove(int x, int y)
     {
 
         m_linkedProcessUse.SendMoveMousePosition(x,y);
@@ -164,6 +249,7 @@ public class JavaOpenMacroCommunicationProcess
     private int m_port = 2510;
     private bool m_keepThreadAlive = true;
     private bool m_killJavaThreadWhenFinish = true;
+        private bool m_isInPause=false;
     private Queue<string> m_toSend = new Queue<string>();
     private string m_lastSend;
     private string m_lastExceptionCatch;
@@ -179,36 +265,52 @@ public class JavaOpenMacroCommunicationProcess
     {
         m_keepThreadAlive = true;
     }
+        public void SetAsPause(bool isInPause) {
+            m_isInPause = isInPause;
+        }
     public void Send(string msg)
-    {
-        m_toSend.Enqueue(msg);
+        {
+            if (m_isInPause)
+                return;
+            m_toSend.Enqueue(msg);
     }
 
-    public void SendTextToCopyPast(string text) {
-      m_toSend.Enqueue( text);
+    public void SendTextToCopyPast(string text)
+        {
+            if (m_isInPause)
+                return;
+            m_toSend.Enqueue( text);
     }
     public void Send(JavaKeyEvent keyToType, PressType press)
     {
+            if (m_isInPause)
+                return;
         string instruction = "ks:";
         if (press == PressType.Press) instruction = "kp:";
         if (press == PressType.Release) instruction = "kr:";
         m_toSend.Enqueue(instruction + keyToType.ToString());
     }
     public void Send(JavaMouseButton mouseType, PressType press)
-    {
-        string instruction = "ms:";
+        {
+            if (m_isInPause)
+                return;
+            string instruction = "ms:";
         if (press == PressType.Press) instruction = "mp:";
         if (press == PressType.Release) instruction = "mr:";
         m_toSend.Enqueue(instruction + (int)mouseType);
     }
 
     public void SendWheel(int value)
-    {
-        m_toSend.Enqueue("wh:" + value);
+        {
+            if (m_isInPause)
+                return;
+            m_toSend.Enqueue("wh:" + value);
     }
     public void SendMoveMousePosition(int x, int y)
-    {
-        m_toSend.Enqueue("mm:" + x + ":" + y);
+        {
+            if (m_isInPause)
+                return;
+            m_toSend.Enqueue("mm:" + x + ":" + y);
     }
 
     private void SendToJavaOpenMacro()
@@ -228,6 +330,7 @@ public class JavaOpenMacroCommunicationProcess
                 sendBytes = Encoding.ASCII.GetBytes(msg);
                 try
                 {
+                    if(!m_isInPause)
                     udpClient.Send(sendBytes, sendBytes.Length);
                 }
                 catch (Exception e)
