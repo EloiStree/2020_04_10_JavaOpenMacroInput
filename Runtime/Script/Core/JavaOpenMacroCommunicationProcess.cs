@@ -25,6 +25,17 @@ namespace JavaOpenMacroInput {
         {
             m_onThreadChange += toDo;
         }
+
+        public bool IsInPause()
+        {
+            return m_linkedProcessUse.IsInPause();
+        }
+
+        public static List<JavaOMI> GetAllRunningRegistered()
+        {
+           return  m_readyToUseRegister.Values.ToList();
+        }
+
         private static void NotifyThreadChange(string affectedThread) {
             if(m_onThreadChange!=null)
                 m_onThreadChange(affectedThread);
@@ -353,5 +364,10 @@ public class JavaOpenMacroCommunicationProcess
         }
 
     }
-}
+
+        public bool IsInPause()
+        {
+            return m_isInPause;
+        }
+    }
 }

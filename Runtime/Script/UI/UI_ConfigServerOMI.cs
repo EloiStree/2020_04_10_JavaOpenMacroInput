@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -135,7 +136,7 @@ public class UI_ConfigServerOMI : MonoBehaviour
     private void LoadPrefData()
     {
         PreferenceSave toLoad = new PreferenceSave();
-        string loaded = PlayerPrefs.GetString(m_prefId,"") ;
+        string loaded =File.Exists(GetPath())? File.ReadAllText(GetPath()):"";
         if (loaded == "") 
             return;
         toLoad = JsonUtility.FromJson<PreferenceSave>(loaded);
@@ -160,7 +161,10 @@ public class UI_ConfigServerOMI : MonoBehaviour
         toSave.m_ip[1] = m_ip[1].GetIndex();
         toSave.m_ip[2] = m_ip[2].GetIndex();
         toSave.m_ip[3] = m_ip[3].GetIndex();
-       PlayerPrefs.SetString(m_prefId, JsonUtility.ToJson(toSave));
+       File.WriteAllText(GetPath(), JsonUtility.ToJson(toSave));
+    }
+    public string GetPath() {
+        return Application.persistentDataPath + "\\" + m_prefId + ".txt";
     }
 
     [System.Serializable]
