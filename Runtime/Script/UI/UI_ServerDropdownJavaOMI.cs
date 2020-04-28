@@ -18,8 +18,13 @@ public class UI_ServerDropdownJavaOMI : MonoBehaviour
 
 
     }
+    private void OnEnable()
+    {
+        RefreshDropdown("");
 
-   
+
+    }
+
 
     private void OnDestroy()
     {

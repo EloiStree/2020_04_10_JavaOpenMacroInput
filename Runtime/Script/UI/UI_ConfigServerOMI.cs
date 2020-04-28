@@ -42,10 +42,10 @@ public class UI_ConfigServerOMI : MonoBehaviour
 
     void Awake()
     {
+        LoadPrefData();
         m_serverState.onValueChanged.AddListener(OnServerChange);
         //m_previousName = m_name.text;
         //m_name.onValueChanged.AddListener(NameChanged);
-        LoadPrefData();
 
         if (m_autoStart.isOn)
             m_serverState.value = 1
@@ -93,7 +93,7 @@ public class UI_ConfigServerOMI : MonoBehaviour
             m_deviceTarget.SetPause(arg0==2);
             SetInteractable(false);
         }
-      
+        SavePrefData();
     }
 
     private void SetInteractable(bool isInteractable)
@@ -124,7 +124,11 @@ public class UI_ConfigServerOMI : MonoBehaviour
          bool altered;
         m_deviceTarget.PastText(txt, out altered);
     }
-   
+    private void OnApplicationFocus(bool focus)
+    {
+        if (focus == false)
+            SavePrefData();
+    }
     private void Reset() {
 
         if (m_ip.Length != 4)
@@ -133,10 +137,11 @@ public class UI_ConfigServerOMI : MonoBehaviour
     }
 
     public string m_prefId="";
-    private void LoadPrefData()
+    private void LoadPrefData(bool saveOnharddrive = true)
     {
         PreferenceSave toLoad = new PreferenceSave();
-        string loaded =File.Exists(GetPath())? File.ReadAllText(GetPath()):"";
+        
+        string loaded = UnityDirectoryStorage.LoadFile("JavaOMI", m_prefId + ".txt", saveOnharddrive);
         if (loaded == "") 
             return;
         toLoad = JsonUtility.FromJson<PreferenceSave>(loaded);
@@ -151,7 +156,7 @@ public class UI_ConfigServerOMI : MonoBehaviour
        
     }
 
-    private void SavePrefData()
+    private void SavePrefData(bool saveOnharddrive = true)
     {
         PreferenceSave toSave = new PreferenceSave();
         toSave.m_autoStart = m_autoStart.isOn;
@@ -161,11 +166,11 @@ public class UI_ConfigServerOMI : MonoBehaviour
         toSave.m_ip[1] = m_ip[1].GetIndex();
         toSave.m_ip[2] = m_ip[2].GetIndex();
         toSave.m_ip[3] = m_ip[3].GetIndex();
-       File.WriteAllText(GetPath(), JsonUtility.ToJson(toSave));
+
+        UnityDirectoryStorage.SaveFile("JavaOMI", m_prefId + ".txt", JsonUtility.ToJson(toSave), saveOnharddrive);
+          
     }
-    public string GetPath() {
-        return Application.persistentDataPath + "\\" + m_prefId + ".txt";
-    }
+ 
 
     [System.Serializable]
     public class PreferenceSave {

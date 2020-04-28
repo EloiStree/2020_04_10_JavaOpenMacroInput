@@ -36,6 +36,11 @@ namespace JavaOpenMacroInput {
            return  m_readyToUseRegister.Values.ToList();
         }
 
+        public void SendRawCommand(string cmd)
+        {
+            m_linkedProcessUse.Send(cmd);
+        }
+
         private static void NotifyThreadChange(string affectedThread) {
             if(m_onThreadChange!=null)
                 m_onThreadChange(affectedThread);
@@ -53,7 +58,12 @@ namespace JavaOpenMacroInput {
     }
 
 
-    public void PastText(string text, out bool guarantyTextNotAttered) {
+        public void PastText(string text)
+        {
+            bool dontcare;
+            PastText(text, out dontcare);
+        }
+            public void PastText(string text, out bool guarantyTextNotAttered) {
             int byteCount = Encoding.ASCII.GetBytes(text).Length;
 
             guarantyTextNotAttered = byteCount < 8000;

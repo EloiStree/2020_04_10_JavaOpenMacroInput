@@ -1,14 +1,15 @@
-
-{                                                                   
-            "name": "JavaOpenMacroUDP",          
+{
+    "name": "JavaOpenMacroUDP",
     "references": [
-],                                                              
-    "optionalUnityReferences": [],                                  
-    "includePlatforms": [],                                                  
-    "excludePlatforms": [],                                         
-    "allowUnsafeCode": false,                                       
-    "overrideReferences": false,                                    
-    "precompiledReferences": [],                                    
-    "autoReferenced": true,                                         
-    "defineConstraints": []                                         
-}                                                                   
+        "GUID:c96b9754c6376d84c846a3c1891af1ef"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
