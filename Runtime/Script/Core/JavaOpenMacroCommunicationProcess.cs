@@ -14,6 +14,7 @@ namespace JavaOpenMacroInput {
             return new JavaOMI(JavaOpenMacroCommunicationProcess.GetFirstCreatedProcess());
         }
 
+      
         public delegate void OnRunningNamedThreadEvent(string runningThreadName);
         private static OnRunningNamedThreadEvent m_onThreadChange;
         public static void RemoveRegisterListener(OnRunningNamedThreadEvent toDo)
@@ -21,6 +22,7 @@ namespace JavaOpenMacroInput {
             m_onThreadChange -= toDo;
         }
 
+      
         public static void AddRegisterListener(OnRunningNamedThreadEvent toDo)
         {
             m_onThreadChange += toDo;
@@ -29,6 +31,10 @@ namespace JavaOpenMacroInput {
         public bool IsInPause()
         {
             return m_linkedProcessUse.IsInPause();
+        }
+        public void SetLocker(string locker)
+        {
+            m_linkedProcessUse.SetLocker( locker);
         }
 
         public static List<JavaOMI> GetAllRunningRegistered()
@@ -46,6 +52,11 @@ namespace JavaOpenMacroInput {
                 m_onThreadChange(affectedThread);
         }
 
+        public void SendShortcutCommands(string text)
+        {
+            m_linkedProcessUse.SendShortcuts(text);
+        }
+
         public static JavaOMI CreateDefaultOne(int port =2501)
     {
         JavaOMI jomi;
@@ -57,6 +68,14 @@ namespace JavaOpenMacroInput {
         m_linkedProcessUse = processUse;
     }
 
+        public void EmbracePast(string leftSide, string rightSide)
+        {
+            m_linkedProcessUse.Embrace(leftSide, rightSide);
+        }
+        internal void EmbracePerLinePast(string leftSide, string rightSide)
+        {
+            m_linkedProcessUse.EmbracePerLine(leftSide, rightSide);
+        }
 
         public void PastText(string text)
         {
@@ -64,7 +83,8 @@ namespace JavaOpenMacroInput {
             PastText(text, out dontcare);
         }
             public void PastText(string text, out bool guarantyTextNotAttered) {
-            int byteCount = Encoding.ASCII.GetBytes(text).Length;
+            text = "past:" + text;
+            int byteCount = Encoding.UTF8.GetBytes(text).Length;
 
             guarantyTextNotAttered = byteCount < 8000;
             if (guarantyTextNotAttered)
@@ -272,6 +292,7 @@ public class JavaOpenMacroCommunicationProcess
     private bool m_killJavaThreadWhenFinish = true;
         private bool m_isInPause=false;
     private Queue<string> m_toSend = new Queue<string>();
+        private string m_locker="";
     private string m_lastSend;
     private string m_lastExceptionCatch;
 
@@ -334,6 +355,17 @@ public class JavaOpenMacroCommunicationProcess
             m_toSend.Enqueue("mm:" + x + ":" + y);
     }
 
+    public void SendShortcuts(string text)
+        {
+            if (m_isInPause)
+                return;
+            m_toSend.Enqueue("sc:" +text);
+        }
+
+        public void SetLocker(string locker) {
+            m_locker = locker;
+        }
+
     private void SendToJavaOpenMacro()
     {
         SendToJavaOpenMacro(m_ip, m_port);
@@ -346,9 +378,9 @@ public class JavaOpenMacroCommunicationProcess
         {
             if (m_toSend.Count > 0)
             {
-                string msg = m_toSend.Dequeue();
-                m_lastSend = msg;
-                sendBytes = Encoding.ASCII.GetBytes(msg);
+                string msg =  m_toSend.Dequeue();
+                m_lastSend =  msg;
+                sendBytes = Encoding.UTF8.GetBytes(m_locker + msg);
                 try
                 {
                     if(!m_isInPause)
@@ -363,7 +395,7 @@ public class JavaOpenMacroCommunicationProcess
             Thread.Sleep(50);
         }
         if (m_killJavaThreadWhenFinish)
-            sendBytes = Encoding.ASCII.GetBytes("stop");
+            sendBytes = Encoding.UTF8.GetBytes(m_locker+"stop");
         try
         {
             udpClient.Send(sendBytes, sendBytes.Length);
@@ -378,6 +410,21 @@ public class JavaOpenMacroCommunicationProcess
         public bool IsInPause()
         {
             return m_isInPause;
+        }
+
+        public void Embrace(string leftSide, string rightSide)
+        {
+            if (m_isInPause)
+                return;
+            m_toSend.Enqueue(string.Format("em:{0}裂{1}", leftSide, rightSide));
+        }
+
+        internal void EmbracePerLine(string leftSide, string rightSide)
+        {
+            if (m_isInPause)
+                return;
+            m_toSend.Enqueue(string.Format("empl:{0}裂{1}", leftSide, rightSide));
+
         }
     }
 }
