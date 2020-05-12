@@ -4676,7 +4676,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &435735426
 GameObject:
@@ -5559,78 +5559,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 493098866}
   m_CullTransparentMesh: 0
---- !u!1 &495904942
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 495904944}
-  - component: {fileID: 495904943}
-  - component: {fileID: 495904945}
-  m_Layer: 0
-  m_Name: JavaOMI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &495904943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 495904942}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bdcd4570a34fcf44a332c05c44cba1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_toSend: 2f0000002c0000003300000033000000360000000b0000003e0000003600000039000000330000002b000000
-  m_delayTimeBetweenKey: 0.1
-  m_textToPast:
-  - {fileID: 4900000, guid: 488d0d02fdf7a014083749f42671ed75, type: 3}
-  m_delayTimeBetweenText: 1
-  m_textSpliteLenght: 4
-  m_mayHaveAlteration: 0
---- !u!4 &495904944
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 495904942}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 111.33334, y: 397.09998, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &495904945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 495904942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bdcd4570a34fcf44a332c05c44cba1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_toSend: 
-  m_delayTimeBetweenKey: 3
-  m_textToPast:
-  - {fileID: 4900000, guid: 488d0d02fdf7a014083749f42671ed75, type: 3}
-  - {fileID: 4900000, guid: 4be969f03a3227a4b8451eeae9d92d62, type: 3}
-  - {fileID: 4900000, guid: 09bd4cfcc81ae3446bd8c28cdc925ad6, type: 3}
-  m_delayTimeBetweenText: 5
-  m_textSpliteLenght: 20
-  m_mayHaveAlteration: 0
 --- !u!1 &496358338
 GameObject:
   m_ObjectHideFlags: 0
@@ -9582,7 +9510,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &938293934
 GameObject:
@@ -10070,7 +9998,7 @@ RectTransform:
   - {fileID: 475728751}
   - {fileID: 1729046109}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -10536,7 +10464,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5598452417697461841, guid: 8dfac2163dc721949ade134354797086, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -7.5000305
+      value: -7.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dfac2163dc721949ade134354797086, type: 3}
@@ -11130,7 +11058,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1084388056
 GameObject:
@@ -20407,8 +20335,16 @@ PrefabInstance:
       value: 2501
       objectReference: {fileID: 0}
     - target: {fileID: 8489571645799795859, guid: 3f2ce083e4b56554eb884a0ab0183483, type: 3}
+      propertyPath: m_buttons.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489571645799795859, guid: 3f2ce083e4b56554eb884a0ab0183483, type: 3}
       propertyPath: m_prefId
       value: 789534231567895432fsd15648795435837193543
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489571645799795859, guid: 3f2ce083e4b56554eb884a0ab0183483, type: 3}
+      propertyPath: m_resume
+      value: Default|192.168.1.1:2501
       objectReference: {fileID: 0}
     - target: {fileID: 8489571645799795862, guid: 3f2ce083e4b56554eb884a0ab0183483, type: 3}
       propertyPath: m_LocalPosition.x
