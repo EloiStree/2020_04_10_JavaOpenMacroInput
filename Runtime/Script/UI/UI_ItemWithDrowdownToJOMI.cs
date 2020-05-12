@@ -5,6 +5,7 @@ public class UI_ItemWithDrowdownToJOMI : MonoBehaviour
 
     public UI_ServerDropdownJavaOMI m_targets;
     public enum TypeOfText { CopyPast, Command, Shortcuts }
+    //A↓ A↑ [[Some Text]] B↕
     public TypeOfText m_textType = TypeOfText.CopyPast;
 
     public void PushText(string text)
