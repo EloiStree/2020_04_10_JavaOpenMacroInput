@@ -18,6 +18,8 @@ public class UI_ConfigServerOMI : MonoBehaviour
     public Selectable[] m_buttons;
     public System.Threading.ThreadPriority m_threadPriority;
     private string m_previousName="";
+    public bool m_saveOnHardrive;
+
     [Header("Debug")]
     public string m_resume = "";
 
@@ -42,7 +44,7 @@ public class UI_ConfigServerOMI : MonoBehaviour
 
     void Awake()
     {
-        LoadPrefData();
+        LoadPrefData(m_saveOnHardrive);
         m_serverState.onValueChanged.AddListener(OnServerChange);
         //m_previousName = m_name.text;
         //m_name.onValueChanged.AddListener(NameChanged);
@@ -63,7 +65,7 @@ public class UI_ConfigServerOMI : MonoBehaviour
 
       //  m_name.onValueChanged.RemoveListener(NameChanged);
         m_serverState.onValueChanged.RemoveListener(OnServerChange);
-        SavePrefData();
+        SavePrefData(m_saveOnHardrive);
     }
 
 
@@ -93,7 +95,7 @@ public class UI_ConfigServerOMI : MonoBehaviour
             m_deviceTarget.SetPause(arg0==2);
             SetInteractable(false);
         }
-        SavePrefData();
+        SavePrefData(m_saveOnHardrive);
     }
 
     private void SetInteractable(bool isInteractable)
@@ -127,7 +129,7 @@ public class UI_ConfigServerOMI : MonoBehaviour
     private void OnApplicationFocus(bool focus)
     {
         if (focus == false)
-            SavePrefData();
+            SavePrefData(m_saveOnHardrive);
     }
     private void Reset() {
 
