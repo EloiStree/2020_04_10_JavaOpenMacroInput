@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class UI_ListenToButtonToJOMI : UI_ItemWithDrowdownToJOMI
 {
+    [TextArea(0,4)]
     public string m_textToPush = "";
     public Button m_linkedButton;
     private void OnEnable()
