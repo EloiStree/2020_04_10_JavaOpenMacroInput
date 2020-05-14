@@ -17,7 +17,7 @@ public class UI_DropdownPages : MonoBehaviour
 
     public void Awake()
     {
-        SetPageFromDropdown(0);
+        SetPageFromDropdown(m_linkedDropbox.value);
 
     }
     private void OnValidate()

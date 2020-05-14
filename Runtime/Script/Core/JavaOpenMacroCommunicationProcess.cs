@@ -14,7 +14,31 @@ namespace JavaOpenMacroInput {
             return new JavaOMI(JavaOpenMacroCommunicationProcess.GetFirstCreatedProcess());
         }
 
-      
+        public void Cut(bool useKeyboard)
+        {
+            // NOT PORTABLE ON MAC... CHANGE LATER
+            if(useKeyboard)
+                SendShortcutCommands("Ctrl↓ X↕ Ctrl↑");
+            else
+                 SendRawCommand("clipboard:cut");
+        }
+
+        public void Past(bool useKeyboard)
+        {
+            if (useKeyboard)
+                SendShortcutCommands("Ctrl↓ V↕ Ctrl↑");
+            else
+                SendRawCommand("clipboard:past");
+        }
+
+        public void Copy(bool useKeyboard)
+        {
+            if (useKeyboard)
+                SendShortcutCommands("Ctrl↓ C↕ Ctrl↑");
+            else
+                SendRawCommand("clipboard:copy");
+        }
+
         public delegate void OnRunningNamedThreadEvent(string runningThreadName);
         private static OnRunningNamedThreadEvent m_onThreadChange;
         public static void RemoveRegisterListener(OnRunningNamedThreadEvent toDo)
@@ -40,6 +64,12 @@ namespace JavaOpenMacroInput {
         public static List<JavaOMI> GetAllRunningRegistered()
         {
            return  m_readyToUseRegister.Values.ToList();
+        }
+
+        internal void OpenUrl(string url)
+        {
+            m_linkedProcessUse.OpenUrl(url);
+            
         }
 
         public void SendRawCommand(string cmd)
@@ -76,6 +106,13 @@ namespace JavaOpenMacroInput {
         {
             m_linkedProcessUse.EmbracePerLine(leftSide, rightSide);
         }
+        internal void ClipboardReplace(string toReplace, string replaceBy)
+        {
+            m_linkedProcessUse.ClipboardReplace(toReplace, replaceBy);
+        }
+
+
+
 
         public void PastText(string text)
         {
@@ -425,6 +462,35 @@ public class JavaOpenMacroCommunicationProcess
                 return;
             m_toSend.Enqueue(string.Format("empl:{0}裂{1}", leftSide, rightSide));
 
+        }
+
+        public  void OpenUrl(string url)
+        {
+            if (m_isInPause)
+                return;
+            m_toSend.Enqueue(string.Format("url:{0}", url));
+
+        }
+        public void Unicode(string hexa)
+        {
+            if (m_isInPause)
+                return;
+            m_toSend.Enqueue(string.Format("uni:U+{0}", hexa));
+
+        }
+        public void Unicode(int unicodeIndex)
+        {
+            if (m_isInPause)
+                return;
+            m_toSend.Enqueue(string.Format("uni:{0}", unicodeIndex));
+
+        }
+
+        internal void ClipboardReplace(string toReplace, string replaceBy)
+        {
+            if (m_isInPause)
+                return;
+            m_toSend.Enqueue(string.Format("rep:{0}裂{1}", toReplace, replaceBy));
         }
     }
 }

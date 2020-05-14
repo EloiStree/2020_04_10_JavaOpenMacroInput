@@ -6,7 +6,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_ConfigServerOMI : MonoBehaviour
+public class UI_ConfigServerOMI : MonoBehaviour, I_UseHarddriveSave
 {
 
     public JavaOMI m_deviceTarget;
@@ -172,7 +172,16 @@ public class UI_ConfigServerOMI : MonoBehaviour
         UnityDirectoryStorage.SaveFile("JavaOMI", m_prefId + ".txt", JsonUtility.ToJson(toSave), saveOnharddrive);
           
     }
- 
+
+    public void SetSwitchTo(bool useHarddrive)
+    {
+        m_saveOnHardrive = useHarddrive;
+    }
+
+    public bool IsUsingHarddriveSave()
+    {
+        return m_saveOnHardrive;
+    }
 
     [System.Serializable]
     public class PreferenceSave {

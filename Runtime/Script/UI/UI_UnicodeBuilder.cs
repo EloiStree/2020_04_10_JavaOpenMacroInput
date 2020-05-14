@@ -6,7 +6,7 @@ using System.Reflection.Emit;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_UnicodeBuilder : MonoBehaviour
+public class UI_UnicodeBuilder : MonoBehaviour, I_UseHarddriveSave
 {
     [TextArea(0,10)]
     public string m_unicodeChars="";
@@ -27,11 +27,13 @@ public class UI_UnicodeBuilder : MonoBehaviour
     }
     private void Start()
     {
+        SetUnicodeChars(UnityDirectoryStorage.LoadFile("JavaOMI", "UnicodePrefList.txt", m_saveOnHarddrive));
         Refresh();
 
     }
     private void OnEnable()
     {
+        SetUnicodeChars(UnityDirectoryStorage.LoadFile("JavaOMI", "UnicodePrefList.txt", m_saveOnHarddrive));
         Refresh();
 
     }
@@ -54,6 +56,7 @@ public class UI_UnicodeBuilder : MonoBehaviour
         if (chars == null || chars.Length<1)
             chars = m_unicodeChars;
         m_unicodeChars = chars;
+        UnityDirectoryStorage.SaveFile("JavaOMI", "UnicodePrefList.txt", m_unicodeChars, m_saveOnHarddrive);
         Refresh();
     }
 
@@ -88,5 +91,15 @@ public class UI_UnicodeBuilder : MonoBehaviour
         }
         if (m_debugInput != null)
             m_debugInput.SetTextWithoutNotify(  m_unicodeChars);
+    }
+
+    public void SetSwitchTo(bool useHarddrive)
+    {
+        m_saveOnHarddrive = useHarddrive;
+    }
+
+    public bool IsUsingHarddriveSave()
+    {
+        return m_saveOnHarddrive;
     }
 }

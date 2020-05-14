@@ -6,7 +6,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_TrollToJOMI : MonoBehaviour
+public class UI_TrollToJOMI : MonoBehaviour, I_UseHarddriveSave
 {
     public UI_ServerDropdownJavaOMI m_targets;
     public InputField m_usersName;
@@ -65,12 +65,10 @@ public class UI_TrollToJOMI : MonoBehaviour
         m_lines = m_linesToSend.text.Split('\n');
         m_lines = Randomize<string>(m_lines).ToArray();
     }
-    public long tick;
     private IEnumerator Loop()
     {
         while (true) {
             yield return new WaitForEndOfFrame();
-            tick++;
             if (m_isOn) { 
                 yield return new WaitForSeconds(UnityEngine.Random.Range(m_minTimeBetweenPush, m_maxTimeBetweenPush));
                 PushRandomTroll();
@@ -122,5 +120,15 @@ public class UI_TrollToJOMI : MonoBehaviour
     {
         System.Random rnd = new System.Random();
         return source.OrderBy<T, int>((item) => rnd.Next());
+    }
+
+    public void SetSwitchTo(bool useHarddrive)
+    {
+        m_saveOnHarddrive = useHarddrive;
+    }
+
+    public bool IsUsingHarddriveSave()
+    {
+        return m_saveOnHarddrive;
     }
 }
