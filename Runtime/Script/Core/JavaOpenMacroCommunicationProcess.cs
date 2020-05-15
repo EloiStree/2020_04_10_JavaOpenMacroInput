@@ -14,6 +14,8 @@ namespace JavaOpenMacroInput {
             return new JavaOMI(JavaOpenMacroCommunicationProcess.GetFirstCreatedProcess());
         }
 
+       
+
         public void Cut(bool useKeyboard)
         {
             // NOT PORTABLE ON MAC... CHANGE LATER
@@ -112,7 +114,87 @@ namespace JavaOpenMacroInput {
         }
 
 
+        public void WindowCommand(string cmd)
+        {
+            m_linkedProcessUse.Send("cmd:" + cmd);
+        }
+        public static class Window {
+            public enum DefaultWindowApp { 
+            Notepad, Calculatrice,CMD, VirtualKeyboard
+            }
+            static string START= "start \"\" ";
+            
+            public static string OpenAppData()
+            {
+                return START + "%appdata%/..";
+            }
+            public static string OpenProg86()
+            {
+                return START + "%COMMONPROGRAMFILES(x86)%";
+            }
+            public static string OpenProg()
+            {
+                return START + "%COMMONPROGRAMFILES%";
+            }
+            public static string OpenHome()
+            {
+                return START + "%HOMEPATH%";
+            }
 
+            
+
+
+            public static string OpenUrl(string url)
+            {
+                return START + url;
+            }
+            public static string OpenExePath(string exePath)
+            {
+                return START + exePath;
+            }
+            public static string OpenDefaultApplication(DefaultWindowApp app) {
+              
+                switch (app)
+                {
+                    case DefaultWindowApp.Notepad: return START + "notpad.exe";
+                    case DefaultWindowApp.Calculatrice: return START + "calc.exe";
+                    case DefaultWindowApp.CMD:
+                        return START + "cmd.exe";
+                    case DefaultWindowApp.VirtualKeyboard:
+                        return START + "osk.exe";
+                    default:
+                        break;
+                }
+                return "";
+
+            }
+
+            public static void CallCaptureScreen(JavaOMI omi)
+            {
+                omi.SendShortcutCommands("Shift↓ Window↓ S↕  Window↑ Shift↑");
+
+            }
+            public static void CallShutdown(JavaOMI omi)
+            {
+                omi.SendRawCommand("cmd:shutdown /s /t 0");
+
+            }
+
+
+        }
+        public void Unicode(int unicodeId)
+        {
+            m_linkedProcessUse.Send("unicode:" + unicodeId);
+        }
+        public void Unicode(string unicodeHexa)
+        {
+            m_linkedProcessUse.Send("unicode:U+" + unicodeHexa);
+        }
+        public enum ClipboardEventType { Cut,Past,Copy,CopyPast,CutPast}
+        public void Clipboard(ClipboardEventType toDo)
+        {
+            m_linkedProcessUse.Send("clipboard:" + toDo.ToString().ToLower());
+        }
 
         public void PastText(string text)
         {

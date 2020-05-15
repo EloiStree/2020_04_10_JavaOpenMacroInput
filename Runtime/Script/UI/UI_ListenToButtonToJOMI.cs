@@ -20,7 +20,7 @@ public class UI_ListenToButtonToJOMI : UI_ItemWithDrowdownToJOMI
 
     }
 
-    private void Push()
+    public void Push()
     {
         if (m_textToPush == "") {
             Text t = GetComponentInChildren<Text>();
