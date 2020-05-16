@@ -21,13 +21,13 @@ public class UI_UnicodeBuilder : MonoBehaviour, I_UseHarddriveSave
     private void Awake()
     {
 
-        SetUnicodeChars ( UnityDirectoryStorage.LoadFile("JavaOMI", "UnicodePrefList.txt", m_saveOnHarddrive));
-        Invoke("Refresh", 0.1f);
+
     
     }
     private void Start()
     {
         SetUnicodeChars(UnityDirectoryStorage.LoadFile("JavaOMI", "UnicodePrefList.txt", m_saveOnHarddrive));
+        Invoke("Refresh", 0.1f);
         Refresh();
 
     }
@@ -46,11 +46,7 @@ public class UI_UnicodeBuilder : MonoBehaviour, I_UseHarddriveSave
         
         UnityDirectoryStorage.SaveFile("JavaOMI", "UnicodePrefList.txt", m_unicodeChars, m_saveOnHarddrive);
     }
-    private void OnValidate()
-    {
-        if(Application.isPlaying)
-          Refresh();
-    }
+   
     public void SetUnicodeChars(string chars)
     {
         if (chars == null || chars.Length<1)
@@ -102,4 +98,10 @@ public class UI_UnicodeBuilder : MonoBehaviour, I_UseHarddriveSave
     {
         return m_saveOnHarddrive;
     }
+
+
+
+
+
+
 }

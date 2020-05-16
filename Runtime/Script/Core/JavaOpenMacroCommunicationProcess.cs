@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
@@ -25,9 +26,14 @@ namespace JavaOpenMacroInput {
                  SendRawCommand("clipboard:cut");
         }
 
-        public void Past(bool useKeyboard)
+        public void ImageUrlToClipboard(string url)
         {
-            if (useKeyboard)
+            SendRawCommand("img2clip:"+ url);
+        }
+
+        public void Past(bool shortcutCommand=false)
+        {
+            if (shortcutCommand)
                 SendShortcutCommands("Ctrl↓ V↕ Ctrl↑");
             else
                 SendRawCommand("clipboard:past");
@@ -116,6 +122,7 @@ namespace JavaOpenMacroInput {
 
         public void WindowCommand(string cmd)
         {
+            DebugMono.Log("cmd:" + cmd);
             m_linkedProcessUse.Send("cmd:" + cmd);
         }
         public static class Window {
@@ -124,48 +131,67 @@ namespace JavaOpenMacroInput {
             }
             static string START= "start \"\" ";
             
-            public static string OpenAppData()
+            public static void GoToAppData(JavaOMI omi)
             {
-                return START + "%appdata%/..";
+                omi.WindowCommand(START + "%appdata%/..");
             }
-            public static string OpenProg86()
+            public static void GoToProg86(JavaOMI omi)
             {
-                return START + "%COMMONPROGRAMFILES(x86)%";
+                omi.WindowCommand( START + "%COMMONPROGRAMFILES(x86)%");
             }
-            public static string OpenProg()
+            public static void GoToProg(JavaOMI omi)
             {
-                return START + "%COMMONPROGRAMFILES%";
+                omi.WindowCommand( START + "%COMMONPROGRAMFILES%");
             }
-            public static string OpenHome()
+            public static void GoToHome(JavaOMI omi)
             {
-                return START + "%HOMEPATH%";
+                omi.WindowCommand(START + "%HOMEPATH%");
+
+            }
+            public static void GoToStartup(JavaOMI omi, bool userOne=false)
+            {
+                if (userOne)
+                    omi.WindowCommand(START + "\"%USERPROFILE%\\Start Menu\\Programs\\\"");
+                else omi.WindowCommand(START + "\"C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\"");
             }
 
             
 
+            public static void LockComputer(JavaOMI omi)
+            {
+                omi.SendShortcutCommands("window↓ l↕ window↑");
 
-            public static string OpenUrl(string url)
-            {
-                return START + url;
             }
-            public static string OpenExePath(string exePath)
+
+
+            public static void OpenUrl(JavaOMI omi, string url)
             {
-                return START + exePath;
+                omi.WindowCommand(START + url);
             }
-            public static string OpenDefaultApplication(DefaultWindowApp app) {
-              
+            public static void OpenExePath(JavaOMI omi, string pathWithExe)
+            {
+                omi.WindowCommand(START +string.Format(" \"{0}\"", pathWithExe) );
+            }
+            public static void OpenDefaultApplication(JavaOMI omi, DefaultWindowApp app)
+            {
+                bool foundCmd=true;
+                string cmd = "";
                 switch (app)
                 {
-                    case DefaultWindowApp.Notepad: return START + "notpad.exe";
-                    case DefaultWindowApp.Calculatrice: return START + "calc.exe";
+                    case DefaultWindowApp.Notepad: 
+                        cmd = START + "notpad.exe"; break;
+                    case DefaultWindowApp.Calculatrice: 
+                        cmd = START + "calc.exe"; break;
                     case DefaultWindowApp.CMD:
-                        return START + "cmd.exe";
+                        cmd = START + "cmd.exe"; break;
                     case DefaultWindowApp.VirtualKeyboard:
-                        return START + "osk.exe";
+                        cmd = START + "osk.exe"; break;
                     default:
+                        foundCmd = false;
                         break;
                 }
-                return "";
+                if(foundCmd)
+                    omi.WindowCommand(cmd);
 
             }
 
@@ -176,11 +202,64 @@ namespace JavaOpenMacroInput {
             }
             public static void CallShutdown(JavaOMI omi)
             {
-                omi.SendRawCommand("cmd:shutdown /s /t 0");
+                omi.WindowCommand("shutdown /s /t 0");
 
             }
 
+            internal static void TakeScreenshot(JavaOMI item)
+            {
+                item.SendShortcutCommands("Window↓ VK_PRINTSCREEN↕  Window↑");
+            }
 
+            internal static void GoToUserDirectory(JavaOMI item, string relativePathInUserDir)
+            {
+                //Debug.Log ("cd %userprofile%/ " + relativePathInUserDir);
+                item.WindowCommand("start %userprofile%/" + relativePathInUserDir);
+            }
+
+            internal static void GoToUserDocument(JavaOMI item)
+            {
+                GoToUserDirectory(item, "documents");
+            }
+
+            internal static void GoToUserVideo(JavaOMI item)
+            {
+                GoToUserDirectory(item, "videos");
+            }
+            internal static void GoToUserImage(JavaOMI item)
+            {
+                GoToUserDirectory(item, "pictures");
+            }
+            internal static void GoToUserScreenshots(JavaOMI item)
+            {
+                GoToUserDirectory(item, "pictures/screenshots");
+            }
+            
+            internal static void GoToUserMusic(JavaOMI item)
+            {
+                GoToUserDirectory(item, "music");
+            }
+
+            internal static void GoToUserDesktop(JavaOMI item)
+            {
+                GoToUserDirectory(item, "desktop");
+            }
+
+            internal static void GoToUserDownload(JavaOMI item)
+            {
+                GoToUserDirectory(item, "downloads");
+            }
+
+            static string startupPath = START + "\"%USERPROFILE%\\Start Menu\\Programs\\{0}\"";
+            static string startupWinPath = START + "\"C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\{0}\"";
+            public static void OpenLnkFromStartup(JavaOMI omi, string relativePath, bool userOne=false)
+            {
+                if(userOne)
+                    omi.WindowCommand(string.Format(startupPath, relativePath));
+                else omi.WindowCommand(string.Format(startupWinPath, relativePath));
+            }
+
+            
         }
         public void Unicode(int unicodeId)
         {
