@@ -6,7 +6,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_TrollToJOMI : MonoBehaviour, I_UseHarddriveSave
+public class UI_TrollToJOMI : MonoBehaviour
 {
     public UI_ServerDropdownJavaOMI m_targets;
     public InputField m_usersName;
@@ -19,20 +19,15 @@ public class UI_TrollToJOMI : MonoBehaviour, I_UseHarddriveSave
     [SerializeField] float m_maxTimeBetweenPush=50;
     [SerializeField] bool m_isOn;
 
-    public bool m_saveOnHarddrive;
     private void Start()
     {
-        m_usersName.text = UnityDirectoryStorage.LoadFile("JavaOMI", "TrollNames.txt", m_saveOnHarddrive);
-        m_linesToSend.text = UnityDirectoryStorage.LoadFile("JavaOMI", "TrollSentence.txt", m_saveOnHarddrive);
-
+    
         Refresh();
         StartCoroutine(Loop());
     }
     private void OnEnable()
     {
-        m_usersName.text = UnityDirectoryStorage.LoadFile("JavaOMI", "TrollNames.txt", m_saveOnHarddrive);
-        m_linesToSend.text = UnityDirectoryStorage.LoadFile("JavaOMI", "TrollSentence.txt", m_saveOnHarddrive);
-
+     
         Refresh();
         StartCoroutine(Loop());
     }
@@ -40,8 +35,7 @@ public class UI_TrollToJOMI : MonoBehaviour, I_UseHarddriveSave
     {
         Refresh();
         StopCoroutine(Loop());
-        UnityDirectoryStorage.SaveFile("JavaOMI", "TrollNames.txt", m_usersName.text, m_saveOnHarddrive);
-        UnityDirectoryStorage.SaveFile("JavaOMI", "TrollSentence.txt", m_linesToSend.text, m_saveOnHarddrive);
+   
     }
 
     public void SetOnOff(bool value) {
@@ -71,7 +65,9 @@ public class UI_TrollToJOMI : MonoBehaviour, I_UseHarddriveSave
             yield return new WaitForEndOfFrame();
             if (m_isOn) { 
                 yield return new WaitForSeconds(UnityEngine.Random.Range(m_minTimeBetweenPush, m_maxTimeBetweenPush));
-                PushRandomTroll();
+                if (m_isOn) { 
+                    PushRandomTroll();
+                }
             }
         }
     }
@@ -122,13 +118,5 @@ public class UI_TrollToJOMI : MonoBehaviour, I_UseHarddriveSave
         return source.OrderBy<T, int>((item) => rnd.Next());
     }
 
-    public void SetSwitchTo(bool useHarddrive)
-    {
-        m_saveOnHarddrive = useHarddrive;
-    }
-
-    public bool IsUsingHarddriveSave()
-    {
-        return m_saveOnHarddrive;
-    }
+   
 }

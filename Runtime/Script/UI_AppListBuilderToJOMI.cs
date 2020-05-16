@@ -118,7 +118,7 @@ public class UI_AppListBuilderToJOMI : MonoBehaviour , I_TextSavable
             + "Adobe Photoshop 2020\n"
             + "Visual Studio 2019\n"
             + "Steam||STARTUP||Steam\\Steam\n"
-            + "OBS||STARTUP||OBS Studio\\OBS Studio(32bit)\n"
+            + "OBS||STARTUP||OBS Studio\\OBS Studio (32bit)\n"
             + "Media Player||PATH||C:\\Program Files\\Windows Media Player\\wmplayer.exe\n";
     }
 
