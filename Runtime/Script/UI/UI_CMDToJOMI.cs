@@ -7,6 +7,11 @@ public class UI_CMDToJOMI : MonoBehaviour
 {
 
     public UI_ServerDropdownJavaOMI m_targets;
+
+
+    
+
+
     public void OpenExe(string applicationNameWithExe)
     {
         foreach (var item in m_targets.GetJavaOMISelected())

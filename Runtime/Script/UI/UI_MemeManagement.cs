@@ -13,10 +13,18 @@ public class UI_MemeManagement : MonoBehaviour
             m_memes[i].m_usePast = value;
         }
     }
-    public void ToggleAllEnter(bool value) {
+    public void ToggleAllEnter(bool value)
+    {
         for (int i = 0; i < m_memes.Length; i++)
         {
             m_memes[i].m_useEnter = value;
+        }
+    }
+    public void ToggleAllAsMarkdown(bool value)
+    {
+        for (int i = 0; i < m_memes.Length; i++)
+        {
+            m_memes[i].m_useMarkDown = value;
         }
     }
 

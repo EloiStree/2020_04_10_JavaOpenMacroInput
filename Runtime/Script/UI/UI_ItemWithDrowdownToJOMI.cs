@@ -20,4 +20,13 @@ public class UI_ItemWithDrowdownToJOMI : MonoBehaviour
                 item.SendShortcutCommands(text);
         }
     }
+    public void PushText(string text, TypeOfText type)
+    {
+        SetTypeOfText(type);
+        PushText(text);
+    }
+        public void SetTypeOfText(TypeOfText type)
+    {
+        m_textType = type;
+    }
 }

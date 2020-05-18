@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,16 +11,30 @@ public class UI_ImageUrlToClipboardJOMI : MonoBehaviour
     public float m_timeBeforePasting = 0.5f;
     public bool m_useEnter = true;
     public float m_timeBeforeValidation = 1f;
+    public bool m_useMarkDown;
 
 
     public void PushImage()
     {
-        PushImage(m_imageUrlLink);
-        if (m_usePast)
+        if (m_useMarkDown)
+            PushImageAskMarkdown(m_imageUrlLink);
+        else
+            PushImage(m_imageUrlLink);
+        if (m_usePast && !m_useMarkDown)
             Invoke("Past", m_timeBeforePasting);
         if(m_useEnter)
             Invoke("Validate", m_timeBeforeValidation);
     }
+
+    private void PushImageAskMarkdown(string imageUrlLink)
+    {
+        foreach (var item in m_targets.GetJavaOMISelected())
+        {
+            item.PastText(string.Format("<img src = \"{0}\" />",imageUrlLink));
+        }
+        
+    }
+
     public void PushImage(string url)
     {
         foreach (var item in m_targets.GetJavaOMISelected())
