@@ -16,6 +16,12 @@ public class UI_InputFieldToJOMI : UI_ItemWithDrowdownToJOMI
     {
         m_from.SetTextWithoutNotify(m_defautlIfReset);
     }
+
+    public void SetText(string m_gitCommand)
+    {
+        throw new NotImplementedException();
+    }
+
     private void OnValidate()
     {
         ResetText();
