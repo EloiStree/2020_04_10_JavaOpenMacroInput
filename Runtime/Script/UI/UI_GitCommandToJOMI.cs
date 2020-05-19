@@ -36,13 +36,9 @@ public class UI_GitCommandToJOMI : MonoBehaviour
         {
             if (openWinR)
             {
-                item.MouseClick(JavaMouseButton.BUTTON1_DOWN_MASK, PressType.Stroke);
+              
                 yield return new WaitForSeconds(0.2f);
-                item.Keyboard(JavaKeyEvent.VK_C, PressType.Stroke);
-                yield return new WaitForSeconds(0.2f);
-                item.Keyboard(JavaKeyEvent.VK_M, PressType.Stroke);
-                yield return new WaitForSeconds(0.2f);
-                item.Keyboard(JavaKeyEvent.VK_D, PressType.Stroke);
+                item.PastText("cmd");
                 yield return new WaitForSeconds(0.2f);
                 item.Keyboard(JavaKeyEvent.VK_ENTER, PressType.Stroke);
                 yield return new WaitForSeconds(1f);
