@@ -8,7 +8,7 @@
   "keywords": ["Script","Tool"],                       
   "category": "Script",                   
   "dependencies": { 
-   "be.eloistree.unitydirectorystorageutility":"https://gitlab.com/eloistree/2020_04_28_UnityDirectoryStorageUtility.git"
+   "be.eloistree.unitydirectorystorageutility":"git+https://gitlab.com/eloistree/2020_04_28_UnityDirectoryStorageUtility.git"
   } ,
   "repository": {
     "type": "git",
@@ -23,7 +23,7 @@
     {
       "displayName": "T",
       "description": "D",
-      "path": "Samples~/E"
+      "path": "Samples~/Test"
     }
   ]
 } 
