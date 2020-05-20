@@ -12,7 +12,8 @@
   } ,
   "repository": {
     "type": "git",
-    "url": "https://github.com/EloiStree/2020_04_10_JavaOpenMacroInput.git"
+    "url": "https://github.com/EloiStree/2020_04_10_JavaOpenMacroInput.git",
+    "revision": "cde70bead704b8f108d410d94a44a3c6bfc3ec6a"
   },
   
   "relatedPackages": {
