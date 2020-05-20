@@ -8,7 +8,7 @@
   "keywords": ["Script","Tool"],                       
   "category": "Script",                   
   "dependencies": {
-    "be.eloistree.unitydirectorystorageutility": "0.0.1"
+    "be.eloistree.unitydirectorystorageutility": "https://github.com/EloiStree/2020_04_10_JavaOpenMacroInput.git"
   } ,
   "repository": {
     "type": "git",
