@@ -7,7 +7,9 @@
   "description": "You package description",                         
   "keywords": ["Script","Tool"],                       
   "category": "Script",                   
-  "dependencies": {  } ,
+  "dependencies": { 
+   "be.eloistree.unitydirectorystorageutility":"https://gitlab.com/eloistree/2020_04_28_UnityDirectoryStorageUtility.git"
+  } ,
   "repository": {
     "type": "git",
     "url": "https://github.com/EloiStree/2020_04_10_JavaOpenMacroInput.git"
