@@ -7,5 +7,22 @@
   "description": "You package description",                         
   "keywords": ["Script","Tool"],                       
   "category": "Script",                   
-  "dependencies":{}     
+  "dependencies": {
+    "be.eloistree.unitydirectorystorageutility": "0.0.1"
+  } ,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EloiStree/2020_04_10_JavaOpenMacroInput.git"
+  },
+  
+  "relatedPackages": {
+    "be.eloistree.javamqtt": "0.0.1"
+  },
+  "samples": [
+    {
+      "displayName": "T",
+      "description": "D",
+      "path": "Samples~/E"
+    }
+  ]
 } 
