@@ -5371,7 +5371,7 @@ MonoBehaviour:
   m_selected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1488147681}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UI_AppListBuilderToJOMI, Assembly-CSharp
         m_MethodName: LaunchApplicationFromName
         m_Mode: 0
@@ -11163,7 +11163,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8213754667471246044, guid: 2abe728f697ca074d987ad083c397c23, type: 3}
       propertyPath: m_Text
-      value: 
+      value: Hey man, do you like patato ?
+      objectReference: {fileID: 0}
+    - target: {fileID: 8213754669093887977, guid: 2abe728f697ca074d987ad083c397c23, type: 3}
+      propertyPath: m_Text
+      value: Hey man, do you like patato ?
       objectReference: {fileID: 0}
     - target: {fileID: 8213754669093887978, guid: 2abe728f697ca074d987ad083c397c23, type: 3}
       propertyPath: m_targets
@@ -25447,7 +25451,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8213754667471246044, guid: 2abe728f697ca074d987ad083c397c23, type: 3}
       propertyPath: m_Text
-      value: 
+      value: "NP0\u2195  NP1\u2195 "
+      objectReference: {fileID: 0}
+    - target: {fileID: 8213754669093887977, guid: 2abe728f697ca074d987ad083c397c23, type: 3}
+      propertyPath: m_Text
+      value: "NP0\u2195  NP1\u2195 "
       objectReference: {fileID: 0}
     - target: {fileID: 8213754669093887978, guid: 2abe728f697ca074d987ad083c397c23, type: 3}
       propertyPath: m_targets
@@ -29041,7 +29049,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1488147681}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UI_AppListBuilderToJOMI, Assembly-CSharp
         m_MethodName: ResetExample
         m_Mode: 6
@@ -39533,7 +39541,7 @@ MonoBehaviour:
   m_folderName: JOMI
   m_fileName: ApplicationStored.txt
   m_saveOnHarddrive: 1
-  m_savableTargeted: {fileID: 1488147681}
+  m_savableTargeted: {fileID: 0}
   m_loadOnAwake: 1
   m_loadOnStart: 1
   m_loadOnEnable: 1
@@ -54918,7 +54926,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1488147681}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UI_AppListBuilderToJOMI, Assembly-CSharp
         m_MethodName: ParseText
         m_Mode: 0
@@ -89684,7 +89692,6 @@ GameObject:
   - component: {fileID: 1488147678}
   - component: {fileID: 1488147680}
   - component: {fileID: 1488147679}
-  - component: {fileID: 1488147681}
   m_Layer: 5
   m_Name: Panel_App
   m_TagString: Untagged
@@ -89750,36 +89757,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1488147677}
   m_CullTransparentMesh: 0
---- !u!114 &1488147681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1488147677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cba66e31e92db2c46ae49e75bfc49298, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_targets: {fileID: 951213584}
-  m_builderInput: {fileID: 917693697}
-  m_appStored: []
-  m_onChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 76985532}
-        m_TargetAssemblyTypeName: UI_DropboxToStringUnityEvent, Assembly-CSharp
-        m_MethodName: SetFromStrings
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &1489509353
 GameObject:
   m_ObjectHideFlags: 0
@@ -96448,7 +96425,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1488147681}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UI_AppListBuilderToJOMI, JavaOpenMacroUDP
         m_MethodName: OpenStartUpFolder
         m_Mode: 1
