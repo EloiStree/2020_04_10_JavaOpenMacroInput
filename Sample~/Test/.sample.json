@@ -1,6 +1,0 @@
-{
-    "displayName":"Java OMI Example of use",
-    "description": "This sample show you how to use the Unity code to communicate with the Java Runtime.",
-    "createSeparatePackage": false,
-    "interactiveImport": "false"
-  }

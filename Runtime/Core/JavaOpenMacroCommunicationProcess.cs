@@ -122,7 +122,7 @@ namespace JavaOpenMacroInput {
 
         public void WindowCommand(string cmd)
         {
-            DebugMono.Log("cmd:" + cmd);
+            //DebugMono.Log("cmd:" + cmd);
             m_linkedProcessUse.Send("cmd:" + cmd);
         }
         public static class Window {
