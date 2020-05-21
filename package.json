@@ -21,9 +21,9 @@
   },
   "samples": [
     {
-      "displayName": "T",
-      "description": "D",
-      "path": "Samples~/Test"
+      "displayName": "Demo",
+      "description": "Copy a demo example of the pacakage in the project",
+      "path": "Sample/Demo"
     }
   ]
 } 
