@@ -12,18 +12,13 @@
   } ,
   "repository": {
     "type": "git",
-    "url": "https://github.com/EloiStree/2020_04_10_JavaOpenMacroInput.git",
-    "revision": "cde70bead704b8f108d410d94a44a3c6bfc3ec6a"
-  },
-  
-  "relatedPackages": {
-    "be.eloistree.javamqtt": "0.0.1"
+    "url": "https://github.com/EloiStree/2020_04_10_JavaOpenMacroInput.git"
   },
   "samples": [
     {
       "displayName": "Demo",
       "description": "Copy a demo example of the pacakage in the project",
-      "path": "Sample/Demo"
+      "path": "Sample~/Demo"
     }
   ]
 } 
