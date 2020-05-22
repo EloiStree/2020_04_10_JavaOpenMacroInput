@@ -408,7 +408,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: "git config --global user.name \u201C[firstname lastname]\u201D\r"
+      value: git log --graph --format=oneline --all
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -498,13 +498,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Panel_GitCmd (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: 'git log --graph --format=oneline '
+      objectReference: {fileID: 0}
     - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Set global user name
+      value: Display full log per line
       objectReference: {fileID: 0}
     - target: {fileID: 3794619438309308662, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Set global user name
+      value: Display full log per line
       objectReference: {fileID: 0}
     - target: {fileID: 4739759716611595057, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_MinHeight
@@ -1398,7 +1402,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: git tag -a [tagname]
+      value: ' git tag -d v0.1'
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1488,13 +1492,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Panel_GitCmd (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: ' git tag -d v0.1'
+      objectReference: {fileID: 0}
     - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Create a tag form currrent commit
+      value: Delete a tag from currrent commit
       objectReference: {fileID: 0}
     - target: {fileID: 3794619438309308662, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Create a tag form currrent commit
+      value: Delete a tag from currrent commit
       objectReference: {fileID: 0}
     - target: {fileID: 4739759716611595057, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_MinHeight
@@ -5319,7 +5327,6 @@ GameObject:
   - component: {fileID: 76985535}
   - component: {fileID: 76985534}
   - component: {fileID: 76985533}
-  - component: {fileID: 76985532}
   - component: {fileID: 76985536}
   m_Layer: 5
   m_Name: Dropdown App
@@ -5350,39 +5357,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &76985532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 76985530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22c1bf50cff94404c99bdb0f529138ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_dropdown: {fileID: 76985533}
-  m_dropdownTitle: App to launch
-  m_textToMethods: 
-  m_lines:
-  - App to launch
-  - 
-  m_selected:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1488147681}
-        m_TargetAssemblyTypeName: UI_AppListBuilderToJOMI, Assembly-CSharp
-        m_MethodName: LaunchApplicationFromName
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &76985533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5574,7 +5548,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Default Shortcut JOMI
+  m_Text: "VK_NUMPAD0: NP0\r"
 --- !u!222 &78709075
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8019,6 +7993,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: "git commit -m \u201C[descriptive message]\u201D"
+      objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -8106,6 +8084,18 @@ PrefabInstance:
     - target: {fileID: 2732476525530134749, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Name
       value: Panel_GitCmd (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: "git commit -m \u201C[descriptive me"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: Commit with descriptive message
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794619438309308662, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: Commit with descriptive message
       objectReference: {fileID: 0}
     - target: {fileID: 4739759716611595057, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_MinHeight
@@ -9914,6 +9904,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: git clone [url]
+      objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -10001,6 +9995,18 @@ PrefabInstance:
     - target: {fileID: 2732476525530134749, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Name
       value: Panel_GitCmd (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: git clone [url]
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: Clone project
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794619438309308662, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: Clone project
       objectReference: {fileID: 0}
     - target: {fileID: 4739759716611595057, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_MinHeight
@@ -11163,7 +11169,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8213754667471246044, guid: 2abe728f697ca074d987ad083c397c23, type: 3}
       propertyPath: m_Text
-      value: 
+      value: Hey man, do you like patato ?
+      objectReference: {fileID: 0}
+    - target: {fileID: 8213754669093887977, guid: 2abe728f697ca074d987ad083c397c23, type: 3}
+      propertyPath: m_Text
+      value: Hey man, do you like patato ?
       objectReference: {fileID: 0}
     - target: {fileID: 8213754669093887978, guid: 2abe728f697ca074d987ad083c397c23, type: 3}
       propertyPath: m_targets
@@ -12093,7 +12103,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: git push [alias] [branch]
+      value: "git reset --hard [commit]\r"
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12183,13 +12193,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Panel_GitCmd (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: "git reset --hard [commit]\r"
+      objectReference: {fileID: 0}
     - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Push commit to the aliase on a branch
+      value: "Clear staging area, rewrite working tree from specified commit\r"
       objectReference: {fileID: 0}
     - target: {fileID: 3794619438309308662, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Push commit to the aliase on a branch
+      value: "Clear staging area, rewrite working tree from specified commit\r"
       objectReference: {fileID: 0}
     - target: {fileID: 4739759716611595057, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_MinHeight
@@ -17592,6 +17606,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: git branch [branch-name]
+      objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -17679,6 +17697,18 @@ PrefabInstance:
     - target: {fileID: 2732476525530134749, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Name
       value: Panel_GitCmd (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: git branch [branch-name]
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: Create branch with name
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794619438309308662, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: Create branch with name
       objectReference: {fileID: 0}
     - target: {fileID: 4739759716611595057, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_MinHeight
@@ -17943,7 +17973,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: git push [alias] [branch]
+      value: git tag "tagname"
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18033,13 +18063,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Panel_GitCmd (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: git tag "tagname"
+      objectReference: {fileID: 0}
     - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Push commit to the aliase on a branch
+      value: Create a tag from currrent commit
       objectReference: {fileID: 0}
     - target: {fileID: 3794619438309308662, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Push commit to the aliase on a branch
+      value: Create a tag from currrent commit
       objectReference: {fileID: 0}
     - target: {fileID: 4739759716611595057, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_MinHeight
@@ -19307,6 +19341,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: git log -n 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -19394,6 +19432,18 @@ PrefabInstance:
     - target: {fileID: 2732476525530134749, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Name
       value: Panel_GitCmd (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: git log -n 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: Display lastest commit names
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794619438309308662, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: Display lastest commit names
       objectReference: {fileID: 0}
     - target: {fileID: 4739759716611595057, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_MinHeight
@@ -25447,7 +25497,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8213754667471246044, guid: 2abe728f697ca074d987ad083c397c23, type: 3}
       propertyPath: m_Text
-      value: 
+      value: "NP0\u2195  NP1\u2195 "
+      objectReference: {fileID: 0}
+    - target: {fileID: 8213754669093887977, guid: 2abe728f697ca074d987ad083c397c23, type: 3}
+      propertyPath: m_Text
+      value: "NP0\u2195  NP1\u2195 "
       objectReference: {fileID: 0}
     - target: {fileID: 8213754669093887978, guid: 2abe728f697ca074d987ad083c397c23, type: 3}
       propertyPath: m_targets
@@ -28707,7 +28761,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1945920639}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.4335
+  m_Size: 0.33879772
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -29041,7 +29095,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1488147681}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UI_AppListBuilderToJOMI, Assembly-CSharp
         m_MethodName: ResetExample
         m_Mode: 6
@@ -29956,6 +30010,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: "git config --global user.email \u201C[valid-email]\u201D"
+      objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -30044,6 +30102,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Panel_GitCmd (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: "git config --global user.email \u201C[v"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: Set Global user mail
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794619438309308662, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: Set Global user mail
+      objectReference: {fileID: 0}
     - target: {fileID: 4739759716611595057, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_MinHeight
       value: 30
@@ -30081,6 +30151,10 @@ PrefabInstance:
     - target: {fileID: 2732476524655733799, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: git push [alias] [branch]
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -30169,6 +30243,18 @@ PrefabInstance:
     - target: {fileID: 2732476525530134749, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Name
       value: Panel_GitCmd (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: git push [alias] [branch]
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: Push commit to the aliase on a branch
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794619438309308662, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: Push commit to the aliase on a branch
       objectReference: {fileID: 0}
     - target: {fileID: 4739759716611595057, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_MinHeight
@@ -36209,7 +36295,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: git push [alias] [branch]
+      value: git branch -d [branchname]
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -36299,13 +36385,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Panel_GitCmd (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: git branch -d [branchname]
+      objectReference: {fileID: 0}
     - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Push commit to the aliase on a branch
+      value: Delete branch
       objectReference: {fileID: 0}
     - target: {fileID: 3794619438309308662, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Push commit to the aliase on a branch
+      value: Delete branch
       objectReference: {fileID: 0}
     - target: {fileID: 4739759716611595057, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_MinHeight
@@ -38321,7 +38411,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: git config credential.helper ""
+      value: git config credential.helper cache
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -38413,15 +38503,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: 
+      value: git config credential.helper cach
       objectReference: {fileID: 0}
     - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Reset your password information
+      value: Set credential to remember
       objectReference: {fileID: 0}
     - target: {fileID: 3794619438309308662, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Reset your password information
+      value: Set credential to remember
       objectReference: {fileID: 0}
     - target: {fileID: 4739759716611595057, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_MinHeight
@@ -39533,7 +39623,7 @@ MonoBehaviour:
   m_folderName: JOMI
   m_fileName: ApplicationStored.txt
   m_saveOnHarddrive: 1
-  m_savableTargeted: {fileID: 1488147681}
+  m_savableTargeted: {fileID: 0}
   m_loadOnAwake: 1
   m_loadOnStart: 1
   m_loadOnEnable: 1
@@ -41824,15 +41914,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 692842023}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22c1bf50cff94404c99bdb0f529138ce, type: 3}
+  m_Script: {fileID: 11500000, guid: c1616f9c97a0f6c48bbaa489a5d46154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_dropdown: {fileID: 692842026}
-  m_dropdownTitle: Default Shortcut JOMI
-  m_textToMethods: "VK_NUMPAD0: NP0\r\nVK_NUMPAD1: NP1\r\nVK_NUMPAD2: NP2\r\nVK_NUMPAD3:
-    NP3\r\nVK_NUMPAD4: NP4\r\nVK_NUMPAD5: NP5\r\nVK_NUMPAD6: NP6\r\nVK_NUMPAD7: NP7\r\nVK_NUMPAD8:
-    NP8\r\nVK_NUMPAD9: NP9\r\nVK_0: 0\r\nVK_1: 1\r\nVK_2: 2\r\nVK_3: 3\r\nVK_4: 4\r\nVK_5:
-    5\r\nVK_6: 6\r\nVK_7: 7\r\nVK_8: 8\r\nVK_9: 9\r\nVK_PLUS: +\r\nVK_MINUS: -\r\nVK_MULTIPLY:
+  m_text: "VK_NUMPAD0: NP0\r\nVK_NUMPAD1: NP1\r\nVK_NUMPAD2: NP2\r\nVK_NUMPAD3: NP3\r\nVK_NUMPAD4:
+    NP4\r\nVK_NUMPAD5: NP5\r\nVK_NUMPAD6: NP6\r\nVK_NUMPAD7: NP7\r\nVK_NUMPAD8: NP8\r\nVK_NUMPAD9:
+    NP9\r\nVK_0: 0\r\nVK_1: 1\r\nVK_2: 2\r\nVK_3: 3\r\nVK_4: 4\r\nVK_5: 5\r\nVK_6:
+    6\r\nVK_7: 7\r\nVK_8: 8\r\nVK_9: 9\r\nVK_PLUS: +\r\nVK_MINUS: -\r\nVK_MULTIPLY:
     *\r\nVK_DIVIDE: /\r\nVK_KP_DOWN: .\r\nVK_UP: up\r\nVK_LEFT: left\r\nVK_RIGHT:
     right\r\nVK_DOWN: down\r\nVK_SPACE: Space\r\nVK_CONTROL: Ctrl\r\nVK_ALT: Alt\r\nVK_ALT_GRAPH:
     AltGr\r\nVK_SHIFT: Shift\r\nVK_CAPS_LOCK: ShiftLock\r\nVK_TAB: Tab\r\nVK_ESCAPE:
@@ -41845,97 +41933,7 @@ MonoBehaviour:
     F6\r\nVK_F7:   F7\r\nVK_F8:   F8\r\nVK_F9:   F9\r\nVK_F10: F10\r\nVK_F11: F11\r\nVK_F12:
     F12\r\nVK_INSERT   : Insert\r\nVK_HOME     : Home\r\nVK_PAGE_DOWN: PageDown\r\nVK_PAGE_UP 
     : PageUp\r\nVK_PAUSE    : Pause\r\nVK_NUM_LOCK : NumLock\t"
-  m_lines:
-  - Default Shortcut JOMI
-  - "VK_NUMPAD0: NP0\r"
-  - "VK_NUMPAD1: NP1\r"
-  - "VK_NUMPAD2: NP2\r"
-  - "VK_NUMPAD3: NP3\r"
-  - "VK_NUMPAD4: NP4\r"
-  - "VK_NUMPAD5: NP5\r"
-  - "VK_NUMPAD6: NP6\r"
-  - "VK_NUMPAD7: NP7\r"
-  - "VK_NUMPAD8: NP8\r"
-  - "VK_NUMPAD9: NP9\r"
-  - "VK_0: 0\r"
-  - "VK_1: 1\r"
-  - "VK_2: 2\r"
-  - "VK_3: 3\r"
-  - "VK_4: 4\r"
-  - "VK_5: 5\r"
-  - "VK_6: 6\r"
-  - "VK_7: 7\r"
-  - "VK_8: 8\r"
-  - "VK_9: 9\r"
-  - "VK_PLUS: +\r"
-  - "VK_MINUS: -\r"
-  - "VK_MULTIPLY: *\r"
-  - "VK_DIVIDE: /\r"
-  - "VK_KP_DOWN: .\r"
-  - "VK_UP: up\r"
-  - "VK_LEFT: left\r"
-  - "VK_RIGHT: right\r"
-  - "VK_DOWN: down\r"
-  - "VK_SPACE: Space\r"
-  - "VK_CONTROL: Ctrl\r"
-  - "VK_ALT: Alt\r"
-  - "VK_ALT_GRAPH: AltGr\r"
-  - "VK_SHIFT: Shift\r"
-  - "VK_CAPS_LOCK: ShiftLock\r"
-  - "VK_TAB: Tab\r"
-  - "VK_ESCAPE: Escape\r"
-  - "VK_DELETE: Del\r"
-  - "VK_DELETE: Delete\r"
-  - "VK_ENTER: Enter\r"
-  - "VK_BACK_SPACE: BackSpace\r"
-  - "VK_WINDOWS: Window\r"
-  - "VK_A: A\r"
-  - "VK_B: B\r"
-  - "VK_C: C\r"
-  - "VK_D: D\r"
-  - "VK_E: E\r"
-  - "VK_F: F\r"
-  - "VK_G: G\r"
-  - "VK_H: H\r"
-  - "VK_I: I\r"
-  - "VK_J: J\r"
-  - "VK_K: K\r"
-  - "VK_L: L\r"
-  - "VK_M: M\r"
-  - "VK_N: N\r"
-  - "VK_O: O\r"
-  - "VK_P: P\r"
-  - "VK_Q: Q\r"
-  - "VK_R: R\r"
-  - "VK_S: S\r"
-  - "VK_T: T\r"
-  - "VK_U: U\r"
-  - "VK_V: V\r"
-  - "VK_W: W\r"
-  - "VK_X: X\r"
-  - "VK_Y: Y\r"
-  - "VK_Z: Z\r"
-  - "VK_F1:   F1\r"
-  - "VK_F2:   F2\r"
-  - "VK_F3:   F3\r"
-  - "VK_F4:   F4\r"
-  - "VK_F5:   F5\r"
-  - "VK_F6:   F6\r"
-  - "VK_F7:   F7\r"
-  - "VK_F8:   F8\r"
-  - "VK_F9:   F9\r"
-  - "VK_F10: F10\r"
-  - "VK_F11: F11\r"
-  - "VK_F12: F12\r"
-  - "VK_INSERT   : Insert\r"
-  - "VK_HOME     : Home\r"
-  - "VK_PAGE_DOWN: PageDown\r"
-  - "VK_PAGE_UP  : PageUp\r"
-  - "VK_PAUSE    : Pause\r"
-  - "VK_NUM_LOCK : NumLock\t"
-  m_selected:
-    m_PersistentCalls:
-      m_Calls: []
+  m_linked: {fileID: 692842026}
 --- !u!114 &692842026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41984,8 +41982,6 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Default Shortcut JOMI
-      m_Image: {fileID: 0}
     - m_Text: "VK_NUMPAD0: NP0\r"
       m_Image: {fileID: 0}
     - m_Text: "VK_NUMPAD1: NP1\r"
@@ -53902,6 +53898,7 @@ GameObject:
   - component: {fileID: 902861080}
   - component: {fileID: 902861079}
   - component: {fileID: 902861082}
+  - component: {fileID: 902861081}
   m_Layer: 0
   m_Name: SendData
   m_TagString: Untagged
@@ -53939,6 +53936,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &902861081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902861078}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e42fad0b88072643b1fbeac2806e9f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_targets: {fileID: 951213584}
+  m_panelToOpen: 0
 --- !u!114 &902861082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53951,7 +53962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f530599c1b45a445a09719f7c81fdea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_targets: {fileID: 0}
+  m_targets: {fileID: 951213584}
 --- !u!1 &905195126
 GameObject:
   m_ObjectHideFlags: 0
@@ -54858,7 +54869,7 @@ RectTransform:
   - {fileID: 1446833145}
   - {fileID: 492218573}
   m_Father: {fileID: 1488147678}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.1}
   m_AnchorMax: {x: 1, y: 1}
@@ -54918,7 +54929,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1488147681}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UI_AppListBuilderToJOMI, Assembly-CSharp
         m_MethodName: ParseText
         m_Mode: 0
@@ -55287,7 +55298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: git config credential.helper cache
+      value: git submodule update --init --recursive
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -55379,15 +55390,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: 
+      value: git submodule update --init --re
       objectReference: {fileID: 0}
     - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Set credential to remember
+      value: Update submodules
       objectReference: {fileID: 0}
     - target: {fileID: 3794619438309308662, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Set credential to remember
+      value: Update submodules
       objectReference: {fileID: 0}
     - target: {fileID: 4739759716611595057, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_MinHeight
@@ -60669,7 +60680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5598452417697461841, guid: 8dfac2163dc721949ade134354797086, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -7.500046
+      value: -7.500061
       objectReference: {fileID: 0}
     - target: {fileID: 5598452417697461841, guid: 8dfac2163dc721949ade134354797086, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -66780,6 +66791,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: git remote add [alias] [url]
+      objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -66867,6 +66882,18 @@ PrefabInstance:
     - target: {fileID: 2732476525530134749, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Name
       value: Panel_GitCmd (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: git remote add [alias] [url]
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: Add remote branch with name
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794619438309308662, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: Add remote branch with name
       objectReference: {fileID: 0}
     - target: {fileID: 4739759716611595057, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_MinHeight
@@ -71098,7 +71125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: git tag -d [tagname]
+      value: git fetch remoteurl
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -71187,6 +71214,10 @@ PrefabInstance:
     - target: {fileID: 2732476525530134749, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Name
       value: Panel_GitCmd (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: git fetch remoteurl
       objectReference: {fileID: 0}
     - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
@@ -73661,7 +73692,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Java Key availaible
+  m_Text: "VK_ENTER\r"
 --- !u!222 &1241536139
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -74300,7 +74331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: git push [alias] [branch]
+      value: git tag
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -74390,13 +74421,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Panel_GitCmd (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: git tag
+      objectReference: {fileID: 0}
     - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Push commit to the aliase on a branch
+      value: List all the tag
       objectReference: {fileID: 0}
     - target: {fileID: 3794619438309308662, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Push commit to the aliase on a branch
+      value: List all the tag
       objectReference: {fileID: 0}
     - target: {fileID: 4739759716611595057, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_MinHeight
@@ -87483,7 +87518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: git config credential.helper cache
+      value: git clone --recursive
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -87575,15 +87610,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: 
+      value: git clone --recursive
       objectReference: {fileID: 0}
     - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Set credential to remember
+      value: Clone with submodules
       objectReference: {fileID: 0}
     - target: {fileID: 3794619438309308662, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Set credential to remember
+      value: Clone with submodules
       objectReference: {fileID: 0}
     - target: {fileID: 4739759716611595057, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_MinHeight
@@ -89373,6 +89408,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: git checkout [branchname]
+      objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -89460,6 +89499,18 @@ PrefabInstance:
     - target: {fileID: 2732476525530134749, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Name
       value: Panel_GitCmd (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: git checkout [branchname]
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: Switch to branch
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794619438309308662, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: Switch to branch
       objectReference: {fileID: 0}
     - target: {fileID: 4739759716611595057, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_MinHeight
@@ -89684,14 +89735,13 @@ GameObject:
   - component: {fileID: 1488147678}
   - component: {fileID: 1488147680}
   - component: {fileID: 1488147679}
-  - component: {fileID: 1488147681}
   m_Layer: 5
   m_Name: Panel_App
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1488147678
 RectTransform:
   m_ObjectHideFlags: 0
@@ -89703,6 +89753,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1946283640}
   - {fileID: 917693696}
   - {fileID: 1927626510}
   m_Father: {fileID: 1188563871}
@@ -89750,36 +89801,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1488147677}
   m_CullTransparentMesh: 0
---- !u!114 &1488147681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1488147677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cba66e31e92db2c46ae49e75bfc49298, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_targets: {fileID: 951213584}
-  m_builderInput: {fileID: 917693697}
-  m_appStored: []
-  m_onChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 76985532}
-        m_TargetAssemblyTypeName: UI_DropboxToStringUnityEvent, Assembly-CSharp
-        m_MethodName: SetFromStrings
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &1489509353
 GameObject:
   m_ObjectHideFlags: 0
@@ -92889,12 +92910,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1546376512}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22c1bf50cff94404c99bdb0f529138ce, type: 3}
+  m_Script: {fileID: 11500000, guid: c1616f9c97a0f6c48bbaa489a5d46154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_dropdown: {fileID: 1546376515}
-  m_dropdownTitle: Java Key availaible
-  m_textToMethods: 'VK_ENTER
+  m_text: 'VK_ENTER
 
     VK_BACK_SPACE
 
@@ -93257,193 +93276,7 @@ MonoBehaviour:
     KEY_LOCATION_RIGHT
 
     KEY_LOCATION_NUMPAD'
-  m_lines:
-  - Java Key availaible
-  - VK_ENTER
-  - VK_BACK_SPACE
-  - VK_TAB
-  - VK_CANCEL
-  - VK_CLEAR
-  - VK_SHIFT
-  - VK_CONTROL
-  - VK_ALT
-  - VK_PAUSE
-  - VK_CAPS_LOCK
-  - VK_ESCAPE
-  - VK_SPACE
-  - VK_PAGE_UP
-  - VK_PAGE_DOWN
-  - VK_END
-  - VK_HOME
-  - VK_LEFT
-  - VK_UP
-  - VK_RIGHT
-  - VK_DOWN
-  - VK_KP_UP
-  - VK_KP_DOWN
-  - VK_KP_LEFT
-  - VK_KP_RIGHT
-  - VK_COMMA
-  - VK_MINUS
-  - VK_PERIOD
-  - VK_SLASH
-  - VK_0
-  - VK_1
-  - VK_2
-  - VK_3
-  - VK_4
-  - VK_5
-  - VK_6
-  - VK_7
-  - VK_8
-  - VK_9
-  - VK_SEMICOLON
-  - VK_EQUALS
-  - VK_A
-  - VK_B
-  - VK_C
-  - VK_D
-  - VK_E
-  - VK_F
-  - VK_G
-  - VK_H
-  - VK_I
-  - VK_J
-  - VK_K
-  - VK_L
-  - VK_M
-  - VK_N
-  - VK_O
-  - VK_P
-  - VK_Q
-  - VK_R
-  - VK_S
-  - VK_T
-  - VK_U
-  - VK_V
-  - VK_W
-  - VK_X
-  - VK_Y
-  - VK_Z
-  - VK_OPEN_BRACKET
-  - VK_BACK_SLASH
-  - VK_CLOSE_BRACKET
-  - VK_NUMPAD0
-  - VK_NUMPAD1
-  - VK_NUMPAD2
-  - VK_NUMPAD3
-  - VK_NUMPAD4
-  - VK_NUMPAD5
-  - VK_NUMPAD6
-  - VK_NUMPAD7
-  - VK_NUMPAD8
-  - VK_NUMPAD9
-  - VK_MULTIPLY
-  - VK_ADD
-  - VK_SEPARATOR
-  - VK_SUBTRACT
-  - VK_DECIMAL
-  - VK_DIVIDE
-  - VK_DELETE
-  - VK_NUM_LOCK
-  - VK_SCROLL_LOCK
-  - VK_F1
-  - VK_F2
-  - VK_F3
-  - VK_F4
-  - VK_F5
-  - VK_F6
-  - VK_F7
-  - VK_F8
-  - VK_F9
-  - VK_F10
-  - VK_F11
-  - VK_F12
-  - VK_F13
-  - VK_F14
-  - VK_F15
-  - VK_F16
-  - VK_F17
-  - VK_F18
-  - VK_F19
-  - VK_F20
-  - VK_F21
-  - VK_F22
-  - VK_F23
-  - VK_F24
-  - VK_PRINTSCREEN
-  - VK_INSERT
-  - VK_HELP
-  - VK_META
-  - VK_BACK_QUOTE
-  - VK_QUOTE
-  - VK_DEAD_GRAVE
-  - VK_DEAD_ACUTE
-  - VK_DEAD_CIRCUMFLEX
-  - VK_DEAD_TILDE
-  - VK_DEAD_MACRON
-  - VK_DEAD_BREVE
-  - VK_DEAD_ABOVEDOT
-  - VK_DEAD_DIAERESIS
-  - VK_DEAD_ABOVERING
-  - VK_DEAD_DOUBLEACUTE
-  - VK_DEAD_CARON
-  - VK_DEAD_CEDILLA
-  - VK_DEAD_OGONEK
-  - VK_DEAD_IOTA
-  - VK_DEAD_VOICED_SOUND
-  - VK_DEAD_SEMIVOICED_SOUND
-  - VK_AMPERSAND
-  - VK_ASTERISK
-  - VK_QUOTEDBL
-  - VK_LESS
-  - VK_GREATER
-  - VK_BRACELEFT
-  - VK_BRACERIGHT
-  - VK_AT
-  - VK_COLON
-  - VK_CIRCUMFLEX
-  - VK_DOLLAR
-  - VK_EURO_SIGN
-  - VK_EXCLAMATION_MARK
-  - VK_INVERTED_EXCLAMATION_MARK
-  - VK_LEFT_PARENTHESIS
-  - VK_NUMBER_SIGN
-  - VK_PLUS
-  - VK_RIGHT_PARENTHESIS
-  - VK_UNDERSCORE
-  - VK_WINDOWS
-  - VK_CONTEXT_MENU
-  - VK_FINAL
-  - VK_CONVERT
-  - VK_NONCONVERT
-  - VK_ACCEPT
-  - VK_MODECHANGE
-  - VK_ALPHANUMERIC
-  - VK_FULL_WIDTH
-  - VK_HALF_WIDTH
-  - VK_CODE_INPUT
-  - VK_INPUT_METHOD_ON_OFF
-  - VK_CUT
-  - VK_COPY
-  - VK_PASTE
-  - VK_UNDO
-  - VK_AGAIN
-  - VK_FIND
-  - VK_PROPS
-  - VK_STOP
-  - VK_COMPOSE
-  - VK_ALT_GRAPH
-  - VK_BEGIN
-  - VK_UNDEFINED
-  - KEY_LOCATION_UNKNOWN
-  - KEY_LOCATION_STANDARD
-  - KEY_LOCATION_LEFT
-  - KEY_LOCATION_RIGHT
-  - KEY_LOCATION_NUMPAD
-  m_selected:
-    m_PersistentCalls:
-      m_Calls: []
+  m_linked: {fileID: 1546376515}
 --- !u!114 &1546376515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93492,369 +93325,367 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Java Key availaible
+    - m_Text: "VK_ENTER\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_ENTER
+    - m_Text: "VK_BACK_SPACE\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_BACK_SPACE
+    - m_Text: "VK_TAB\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_TAB
+    - m_Text: "VK_CANCEL\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_CANCEL
+    - m_Text: "VK_CLEAR\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_CLEAR
+    - m_Text: "VK_SHIFT\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_SHIFT
+    - m_Text: "VK_CONTROL\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_CONTROL
+    - m_Text: "VK_ALT\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_ALT
+    - m_Text: "VK_PAUSE\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_PAUSE
+    - m_Text: "VK_CAPS_LOCK\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_CAPS_LOCK
+    - m_Text: "VK_ESCAPE\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_ESCAPE
+    - m_Text: "VK_SPACE\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_SPACE
+    - m_Text: "VK_PAGE_UP\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_PAGE_UP
+    - m_Text: "VK_PAGE_DOWN\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_PAGE_DOWN
+    - m_Text: "VK_END\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_END
+    - m_Text: "VK_HOME\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_HOME
+    - m_Text: "VK_LEFT\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_LEFT
+    - m_Text: "VK_UP\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_UP
+    - m_Text: "VK_RIGHT\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_RIGHT
+    - m_Text: "VK_DOWN\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_DOWN
+    - m_Text: "VK_KP_UP\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_KP_UP
+    - m_Text: "VK_KP_DOWN\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_KP_DOWN
+    - m_Text: "VK_KP_LEFT\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_KP_LEFT
+    - m_Text: "VK_KP_RIGHT\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_KP_RIGHT
+    - m_Text: "VK_COMMA\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_COMMA
+    - m_Text: "VK_MINUS\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_MINUS
+    - m_Text: "VK_PERIOD\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_PERIOD
+    - m_Text: "VK_SLASH\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_SLASH
+    - m_Text: "VK_0\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_0
+    - m_Text: "VK_1\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_1
+    - m_Text: "VK_2\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_2
+    - m_Text: "VK_3\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_3
+    - m_Text: "VK_4\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_4
+    - m_Text: "VK_5\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_5
+    - m_Text: "VK_6\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_6
+    - m_Text: "VK_7\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_7
+    - m_Text: "VK_8\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_8
+    - m_Text: "VK_9\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_9
+    - m_Text: "VK_SEMICOLON\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_SEMICOLON
+    - m_Text: "VK_EQUALS\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_EQUALS
+    - m_Text: "VK_A\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_A
+    - m_Text: "VK_B\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_B
+    - m_Text: "VK_C\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_C
+    - m_Text: "VK_D\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_D
+    - m_Text: "VK_E\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_E
+    - m_Text: "VK_F\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_F
+    - m_Text: "VK_G\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_G
+    - m_Text: "VK_H\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_H
+    - m_Text: "VK_I\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_I
+    - m_Text: "VK_J\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_J
+    - m_Text: "VK_K\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_K
+    - m_Text: "VK_L\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_L
+    - m_Text: "VK_M\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_M
+    - m_Text: "VK_N\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_N
+    - m_Text: "VK_O\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_O
+    - m_Text: "VK_P\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_P
+    - m_Text: "VK_Q\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_Q
+    - m_Text: "VK_R\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_R
+    - m_Text: "VK_S\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_S
+    - m_Text: "VK_T\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_T
+    - m_Text: "VK_U\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_U
+    - m_Text: "VK_V\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_V
+    - m_Text: "VK_W\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_W
+    - m_Text: "VK_X\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_X
+    - m_Text: "VK_Y\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_Y
+    - m_Text: "VK_Z\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_Z
+    - m_Text: "VK_OPEN_BRACKET\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_OPEN_BRACKET
+    - m_Text: "VK_BACK_SLASH\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_BACK_SLASH
+    - m_Text: "VK_CLOSE_BRACKET\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_CLOSE_BRACKET
+    - m_Text: "VK_NUMPAD0\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_NUMPAD0
+    - m_Text: "VK_NUMPAD1\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_NUMPAD1
+    - m_Text: "VK_NUMPAD2\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_NUMPAD2
+    - m_Text: "VK_NUMPAD3\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_NUMPAD3
+    - m_Text: "VK_NUMPAD4\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_NUMPAD4
+    - m_Text: "VK_NUMPAD5\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_NUMPAD5
+    - m_Text: "VK_NUMPAD6\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_NUMPAD6
+    - m_Text: "VK_NUMPAD7\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_NUMPAD7
+    - m_Text: "VK_NUMPAD8\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_NUMPAD8
+    - m_Text: "VK_NUMPAD9\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_NUMPAD9
+    - m_Text: "VK_MULTIPLY\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_MULTIPLY
+    - m_Text: "VK_ADD\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_ADD
+    - m_Text: "VK_SEPARATOR\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_SEPARATOR
+    - m_Text: "VK_SUBTRACT\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_SUBTRACT
+    - m_Text: "VK_DECIMAL\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_DECIMAL
+    - m_Text: "VK_DIVIDE\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_DIVIDE
+    - m_Text: "VK_DELETE\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_DELETE
+    - m_Text: "VK_NUM_LOCK\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_NUM_LOCK
+    - m_Text: "VK_SCROLL_LOCK\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_SCROLL_LOCK
+    - m_Text: "VK_F1\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_F1
+    - m_Text: "VK_F2\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_F2
+    - m_Text: "VK_F3\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_F3
+    - m_Text: "VK_F4\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_F4
+    - m_Text: "VK_F5\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_F5
+    - m_Text: "VK_F6\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_F6
+    - m_Text: "VK_F7\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_F7
+    - m_Text: "VK_F8\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_F8
+    - m_Text: "VK_F9\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_F9
+    - m_Text: "VK_F10\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_F10
+    - m_Text: "VK_F11\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_F11
+    - m_Text: "VK_F12\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_F12
+    - m_Text: "VK_F13\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_F13
+    - m_Text: "VK_F14\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_F14
+    - m_Text: "VK_F15\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_F15
+    - m_Text: "VK_F16\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_F16
+    - m_Text: "VK_F17\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_F17
+    - m_Text: "VK_F18\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_F18
+    - m_Text: "VK_F19\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_F19
+    - m_Text: "VK_F20\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_F20
+    - m_Text: "VK_F21\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_F21
+    - m_Text: "VK_F22\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_F22
+    - m_Text: "VK_F23\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_F23
+    - m_Text: "VK_F24\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_F24
+    - m_Text: "VK_PRINTSCREEN\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_PRINTSCREEN
+    - m_Text: "VK_INSERT\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_INSERT
+    - m_Text: "VK_HELP\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_HELP
+    - m_Text: "VK_META\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_META
+    - m_Text: "VK_BACK_QUOTE\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_BACK_QUOTE
+    - m_Text: "VK_QUOTE\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_QUOTE
+    - m_Text: "VK_DEAD_GRAVE\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_DEAD_GRAVE
+    - m_Text: "VK_DEAD_ACUTE\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_DEAD_ACUTE
+    - m_Text: "VK_DEAD_CIRCUMFLEX\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_DEAD_CIRCUMFLEX
+    - m_Text: "VK_DEAD_TILDE\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_DEAD_TILDE
+    - m_Text: "VK_DEAD_MACRON\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_DEAD_MACRON
+    - m_Text: "VK_DEAD_BREVE\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_DEAD_BREVE
+    - m_Text: "VK_DEAD_ABOVEDOT\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_DEAD_ABOVEDOT
+    - m_Text: "VK_DEAD_DIAERESIS\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_DEAD_DIAERESIS
+    - m_Text: "VK_DEAD_ABOVERING\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_DEAD_ABOVERING
+    - m_Text: "VK_DEAD_DOUBLEACUTE\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_DEAD_DOUBLEACUTE
+    - m_Text: "VK_DEAD_CARON\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_DEAD_CARON
+    - m_Text: "VK_DEAD_CEDILLA\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_DEAD_CEDILLA
+    - m_Text: "VK_DEAD_OGONEK\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_DEAD_OGONEK
+    - m_Text: "VK_DEAD_IOTA\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_DEAD_IOTA
+    - m_Text: "VK_DEAD_VOICED_SOUND\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_DEAD_VOICED_SOUND
+    - m_Text: "VK_DEAD_SEMIVOICED_SOUND\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_DEAD_SEMIVOICED_SOUND
+    - m_Text: "VK_AMPERSAND\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_AMPERSAND
+    - m_Text: "VK_ASTERISK\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_ASTERISK
+    - m_Text: "VK_QUOTEDBL\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_QUOTEDBL
+    - m_Text: "VK_LESS\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_LESS
+    - m_Text: "VK_GREATER\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_GREATER
+    - m_Text: "VK_BRACELEFT\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_BRACELEFT
+    - m_Text: "VK_BRACERIGHT\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_BRACERIGHT
+    - m_Text: "VK_AT\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_AT
+    - m_Text: "VK_COLON\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_COLON
+    - m_Text: "VK_CIRCUMFLEX\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_CIRCUMFLEX
+    - m_Text: "VK_DOLLAR\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_DOLLAR
+    - m_Text: "VK_EURO_SIGN\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_EURO_SIGN
+    - m_Text: "VK_EXCLAMATION_MARK\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_EXCLAMATION_MARK
+    - m_Text: "VK_INVERTED_EXCLAMATION_MARK\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_INVERTED_EXCLAMATION_MARK
+    - m_Text: "VK_LEFT_PARENTHESIS\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_LEFT_PARENTHESIS
+    - m_Text: "VK_NUMBER_SIGN\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_NUMBER_SIGN
+    - m_Text: "VK_PLUS\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_PLUS
+    - m_Text: "VK_RIGHT_PARENTHESIS\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_RIGHT_PARENTHESIS
+    - m_Text: "VK_UNDERSCORE\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_UNDERSCORE
+    - m_Text: "VK_WINDOWS\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_WINDOWS
+    - m_Text: "VK_CONTEXT_MENU\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_CONTEXT_MENU
+    - m_Text: "VK_FINAL\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_FINAL
+    - m_Text: "VK_CONVERT\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_CONVERT
+    - m_Text: "VK_NONCONVERT\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_NONCONVERT
+    - m_Text: "VK_ACCEPT\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_ACCEPT
+    - m_Text: "VK_MODECHANGE\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_MODECHANGE
+    - m_Text: "VK_ALPHANUMERIC\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_ALPHANUMERIC
+    - m_Text: "VK_FULL_WIDTH\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_FULL_WIDTH
+    - m_Text: "VK_HALF_WIDTH\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_HALF_WIDTH
+    - m_Text: "VK_CODE_INPUT\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_CODE_INPUT
+    - m_Text: "VK_INPUT_METHOD_ON_OFF\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_INPUT_METHOD_ON_OFF
+    - m_Text: "VK_CUT\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_CUT
+    - m_Text: "VK_COPY\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_COPY
+    - m_Text: "VK_PASTE\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_PASTE
+    - m_Text: "VK_UNDO\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_UNDO
+    - m_Text: "VK_AGAIN\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_AGAIN
+    - m_Text: "VK_FIND\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_FIND
+    - m_Text: "VK_PROPS\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_PROPS
+    - m_Text: "VK_STOP\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_STOP
+    - m_Text: "VK_COMPOSE\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_COMPOSE
+    - m_Text: "VK_ALT_GRAPH\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_ALT_GRAPH
+    - m_Text: "VK_BEGIN\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_BEGIN
+    - m_Text: "VK_UNDEFINED\r"
       m_Image: {fileID: 0}
-    - m_Text: VK_UNDEFINED
+    - m_Text: "KEY_LOCATION_UNKNOWN\r"
       m_Image: {fileID: 0}
-    - m_Text: KEY_LOCATION_UNKNOWN
+    - m_Text: "KEY_LOCATION_STANDARD\r"
       m_Image: {fileID: 0}
-    - m_Text: KEY_LOCATION_STANDARD
+    - m_Text: "KEY_LOCATION_LEFT\r"
       m_Image: {fileID: 0}
-    - m_Text: KEY_LOCATION_LEFT
-      m_Image: {fileID: 0}
-    - m_Text: KEY_LOCATION_RIGHT
+    - m_Text: "KEY_LOCATION_RIGHT\r"
       m_Image: {fileID: 0}
     - m_Text: KEY_LOCATION_NUMPAD
       m_Image: {fileID: 0}
@@ -94407,7 +94238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: git revert commitid
+      value: git config --list
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -94499,15 +94330,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: git revert commitid
+      value: git config --list
       objectReference: {fileID: 0}
     - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Delete a tag from currrent commit
+      value: Display config info
       objectReference: {fileID: 0}
     - target: {fileID: 3794619438309308662, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Delete a tag from currrent commit
+      value: Display config info
       objectReference: {fileID: 0}
     - target: {fileID: 4739759716611595057, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_MinHeight
@@ -96400,10 +96231,10 @@ RectTransform:
   m_Father: {fileID: 1927626510}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 344.90234, y: -16.33319}
-  m_SizeDelta: {x: 689.8047, y: 32.66638}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1590141994
 MonoBehaviour:
@@ -96448,7 +96279,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1488147681}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UI_AppListBuilderToJOMI, JavaOpenMacroUDP
         m_MethodName: OpenStartUpFolder
         m_Mode: 1
@@ -99271,7 +99102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: git push [alias] [branch]
+      value: git rebase [branch]
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -99361,13 +99192,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Panel_GitCmd (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: git rebase [branch]
+      objectReference: {fileID: 0}
     - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Push commit to the aliase on a branch
+      value: Apply any commits of current branch ahead of specified one
       objectReference: {fileID: 0}
     - target: {fileID: 3794619438309308662, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Push commit to the aliase on a branch
+      value: Apply any commits of current branch ahead of specified one
       objectReference: {fileID: 0}
     - target: {fileID: 4739759716611595057, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_MinHeight
@@ -113401,7 +113236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: git config credential.helper cache
+      value: git submodule add urlModule pathOnDiskOrRelative
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -113493,15 +113328,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: 
+      value: git submodule add urlModule p
       objectReference: {fileID: 0}
     - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Set credential to remember
+      value: Add sub modules
       objectReference: {fileID: 0}
     - target: {fileID: 3794619438309308662, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Set credential to remember
+      value: Add sub modules
       objectReference: {fileID: 0}
     - target: {fileID: 4739759716611595057, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_MinHeight
@@ -114637,7 +114472,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: git config --list
+      value: git show-ref
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -114729,15 +114564,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: git config --list
+      value: git show-ref
       objectReference: {fileID: 0}
     - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Display config info
+      value: Show ref, tag and branch
       objectReference: {fileID: 0}
     - target: {fileID: 3794619438309308662, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Display config info
+      value: Show ref, tag and branch
       objectReference: {fileID: 0}
     - target: {fileID: 4739759716611595057, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_MinHeight
@@ -116617,7 +116452,7 @@ RectTransform:
   m_Children:
   - {fileID: 1590141993}
   m_Father: {fileID: 1488147678}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.1}
@@ -118279,6 +118114,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946184202}
   m_CullTransparentMesh: 0
+--- !u!1 &1946283639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1946283640}
+  m_Layer: 5
+  m_Name: Missing App script
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1946283640
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946283639}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1488147678}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1947210820
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -118840,7 +118710,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: git remote set-url origin git@github.com:User/project-new.git
+      value: git remote set-url origin projecturl.git
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -118929,6 +118799,10 @@ PrefabInstance:
     - target: {fileID: 2732476525530134749, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Name
       value: Panel_GitCmd (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: git remote set-url origin projectu
       objectReference: {fileID: 0}
     - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
@@ -120193,6 +120067,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: git merge [branch]
+      objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -120280,6 +120158,18 @@ PrefabInstance:
     - target: {fileID: 2732476525530134749, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Name
       value: Panel_GitCmd (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: git merge [branch]
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: Merge commit from a branch to main
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794619438309308662, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: Merge commit from a branch to main
       objectReference: {fileID: 0}
     - target: {fileID: 4739759716611595057, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_MinHeight
@@ -120603,8 +120493,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1166321445}
   m_HandleRect: {fileID: 1166321444}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.9999998
+  m_Value: 1
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -122274,7 +122164,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: git config --list
+      value: git config credential.helper ""
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -122366,15 +122256,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: 
+      value: git config credential.helper ""
       objectReference: {fileID: 0}
     - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Display config info
+      value: Set credential to each time
       objectReference: {fileID: 0}
     - target: {fileID: 3794619438309308662, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: Display config info
+      value: Set credential to each time
       objectReference: {fileID: 0}
     - target: {fileID: 4739759716611595057, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_MinHeight
@@ -127899,7 +127789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: git tag
+      value: git remote set-url origin git@github.com:User/project-new.git
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -127989,13 +127879,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Panel_GitCmd (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: git remote set-url origin git@git
+      objectReference: {fileID: 0}
     - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: List all the tag
+      value: Reset / Set the url of the repo
       objectReference: {fileID: 0}
     - target: {fileID: 3794619438309308662, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: List all the tag
+      value: Reset / Set the url of the repo
       objectReference: {fileID: 0}
     - target: {fileID: 4739759716611595057, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_MinHeight
@@ -128831,7 +128725,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
-      value: git fetch remoteurl
+      value: git revert commitid
       objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -128920,6 +128814,10 @@ PrefabInstance:
     - target: {fileID: 2732476525530134749, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Name
       value: Panel_GitCmd (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: git revert commitid
       objectReference: {fileID: 0}
     - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Text
@@ -129103,6 +129001,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2732476525284649389, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: "git config --global user.name \u201C[firstname lastname]\u201D\r"
+      objectReference: {fileID: 0}
     - target: {fileID: 2732476525530134748, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -129190,6 +129092,18 @@ PrefabInstance:
     - target: {fileID: 2732476525530134749, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_Name
       value: Panel_GitCmd
+      objectReference: {fileID: 0}
+    - target: {fileID: 2732476525843047576, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: "git config --global user.name \u201C[fi"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525516161741972922, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: Set global user name
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794619438309308662, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
+      propertyPath: m_Text
+      value: Set global user name
       objectReference: {fileID: 0}
     - target: {fileID: 4739759716611595057, guid: 8b92d2e0d5cb9f540983dadb7eecce4d, type: 3}
       propertyPath: m_MinHeight

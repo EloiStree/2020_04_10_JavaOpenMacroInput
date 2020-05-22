@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace JavaOpenMacroInput {
@@ -49,6 +51,15 @@ namespace JavaOpenMacroInput {
 
         public delegate void OnRunningNamedThreadEvent(string runningThreadName);
         private static OnRunningNamedThreadEvent m_onThreadChange;
+
+        internal void CombineStroke(params string [] toSend)
+        {
+             if (toSend.Length > 0)
+            {
+                SendRawCommand("ksc:" + string.Join("|", toSend));
+            }
+        }
+
         public static void RemoveRegisterListener(OnRunningNamedThreadEvent toDo)
         {
             m_onThreadChange -= toDo;
@@ -120,12 +131,41 @@ namespace JavaOpenMacroInput {
         }
 
 
-        public void WindowCommand(string cmd)
+        public void WindowCommand(string cmd, bool copyInClipboard=false)
         {
             //DebugMono.Log("cmd:" + cmd);
-            m_linkedProcessUse.Send("cmd:" + cmd);
+            m_linkedProcessUse.Send("cmd:" + cmd+(copyInClipboard? "| clip":""));
         }
         public static class Window {
+            public static class VirtualDesktop {
+
+                public static void Create(JavaOMI omi)
+                {
+
+                    omi.SendShortcutCommands("Window↓ Ctrl↓ d↕ Ctrl↑ Window↑");
+                }
+                public static void Display(JavaOMI omi)
+                {
+
+                    omi.SendShortcutCommands("Window↓  tab↕  Window↑");
+                }
+                public static void Delete(JavaOMI omi)
+                {
+
+                    omi.SendShortcutCommands("Window↓ Ctrl↓ f4↕ Ctrl↑ Window↑");
+                }
+                public static void Next(JavaOMI omi)
+                {
+
+                    omi.SendShortcutCommands("Window↓ Ctrl↓ right↕ Ctrl↑ Window↑");
+                }
+                public static void Previous(JavaOMI omi)
+                {
+                    omi.SendShortcutCommands("Window↓ Ctrl↓ Left↕ Ctrl↑ Window↑");
+                }
+
+            }
+
             public enum DefaultWindowApp { 
             Notepad, Calculatrice,CMD, VirtualKeyboard
             }
@@ -148,14 +188,53 @@ namespace JavaOpenMacroInput {
                 omi.WindowCommand(START + "%HOMEPATH%");
 
             }
+
+            public static void OpenNewCommandWindow(JavaOMI omi)
+            {
+                omi.WindowCommand("start \"\" cmd");
+            }
+            public static void OpenNewCommandShell(JavaOMI omi)
+            {
+                omi.WindowCommand("powershell");
+
+            }
+            public static void OpenConfigPanel(JavaOMI omi,string panelEnumTypeName)
+            {
+                ControlPanelEnum e= ControlPanelEnum.AdminTools;
+                try
+                {
+                    e = (ControlPanelEnum)Enum.Parse(typeof(ControlPanelEnum), panelEnumTypeName);
+                }
+                catch (Exception ) { return; }
+                OpenConfigPanel(omi,e);
+            }
+            public static void OpenConfigPanel(JavaOMI omi, ControlPanelEnum panelType) {
+
+                omi.WindowCommand(EnumControlToPanel.GetCommand(panelType));
+            }
+
             public static void GoToStartup(JavaOMI omi, bool userOne=false)
             {
                 if (userOne)
                     omi.WindowCommand(START + "\"%USERPROFILE%\\Start Menu\\Programs\\\"");
                 else omi.WindowCommand(START + "\"C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\"");
             }
+            public static void Ping(JavaOMI omi, string urlToPing)
+            {
+                omi.WindowCommand("ping " + urlToPing);
 
-            
+            }
+            public static void IpOfWebsite(JavaOMI omi, string websiteUrl)
+            {
+                omi.WindowCommand("nslookup " + websiteUrl);
+
+            }
+            public static void DisplayIpConfig(JavaOMI omi)
+            {
+                omi.WindowCommand("ipconfig");
+
+            }
+
 
             public static void LockComputer(JavaOMI omi)
             {
@@ -259,7 +338,86 @@ namespace JavaOpenMacroInput {
                 else omi.WindowCommand(string.Format(startupWinPath, relativePath));
             }
 
-            
+            internal static void GoToControlPanel(JavaOMI item)
+            {
+                item.WindowCommand("control panel");
+                item.Keyboard(JavaKeyEvent.VK_ENTER);
+            }
+            public static IEnumerator WindowSearchAndValidate(JavaOMI item, string toSearch)
+            {
+                item.SendShortcutCommands("window↕");
+                yield return new WaitForSeconds(0.5f);
+                item.PastText(toSearch);
+                yield return new WaitForSeconds(0.5f);
+                item.Keyboard(JavaKeyEvent.VK_ENTER);
+            }
+            public static IEnumerator GoToDeveloperConfig(JavaOMI item, float timeToWaitWinToOne = 2.5f, float enterDelayTime = 1f)
+            {
+
+                return GoToParametersWithSearch(item, "developer", timeToWaitWinToOne, enterDelayTime);
+            }
+            public static IEnumerator GoToHotspotConfig(JavaOMI item, float timeToWaitWinToOne = 2.5f, float enterDelayTime = 1f)
+            {
+                return GoToParametersWithSearch(item, "mobile", timeToWaitWinToOne, enterDelayTime);
+            }
+            public static IEnumerator GoToParametersWithSearch(JavaOMI item,string keywordToSearch, float timeToWaitWinToOne = 2.5f, float enterDelayTime = 1f)
+            {
+
+                item.WindowCommand("control /name Microsoft.WindowsUpdate");
+                yield return new WaitForSeconds(timeToWaitWinToOne);
+                item.PastText(keywordToSearch);
+                yield return new WaitForSeconds(1f);
+                item.Keyboard(JavaKeyEvent.VK_ENTER);
+                yield return new WaitForSeconds(1f);
+                item.Keyboard(JavaKeyEvent.VK_ENTER);
+                yield break;
+            }
+
+            public static IEnumerator GoToHotspotConfig(JavaOMI item, float timeToWaitWinToOpne=2.5f)
+            {
+                
+                item.WindowCommand("control /name Microsoft.WindowsUpdate");
+                yield return new WaitForSeconds(timeToWaitWinToOpne);
+                item.Keyboard(JavaKeyEvent.VK_M);
+                item.Keyboard(JavaKeyEvent.VK_O);
+                item.Keyboard(JavaKeyEvent.VK_B);
+                item.Keyboard(JavaKeyEvent.VK_I);
+                item.Keyboard(JavaKeyEvent.VK_L);
+                item.Keyboard(JavaKeyEvent.VK_E);
+                yield return new WaitForSeconds(1f);
+                item.Keyboard(JavaKeyEvent.VK_ENTER);
+                yield return new WaitForSeconds(1f);
+                item.Keyboard(JavaKeyEvent.VK_ENTER);
+                yield break;
+            }
+
+            internal static void CtrlAltDelete(JavaOMI item)
+            {
+                item.SendShortcutCommands("ctrl↓ alt↓ delete↕ alt↑ ctrl↑");
+            }
+            internal static void ForceQuitCurrentApp(JavaOMI item)
+            {
+                item.SendShortcutCommands("ctrl↓ alt↓ f4↕ alt↑ ctrl↑");
+            }
+
+            internal static void TaskManager(JavaOMI item)
+            {
+                item.SendShortcutCommands("ctrl↓ alt↓ escape↕ alt↑ ctlr↑");
+            }
+            internal static void GoToPaint(JavaOMI item)
+            {
+                item.WindowCommand("mspaint");
+
+            }
+            internal static void GoToFullWindowInformation(JavaOMI item) {
+                item.WindowCommand ("msinfo32");
+
+            }
+
+            internal static void SwitchKeyboardLayout(JavaOMI item)
+            {
+                item.SendShortcutCommands("window↓ space↕ window↑");
+            }
         }
         public void Unicode(int unicodeId)
         {
@@ -457,7 +615,7 @@ namespace JavaOpenMacroInput {
 
 public class JavaOpenMacroCommunicationProcess
 {
-    public static JavaOpenMacroCommunicationProcess CreateDefaultOne(out JavaOMI shortcut, int port = 2501, string ip = "127.0.0.1", System.Threading.ThreadPriority priority = ThreadPriority.Normal) {
+    public static JavaOpenMacroCommunicationProcess CreateDefaultOne(out JavaOMI shortcut, int port = 2501, string ip = "127.0.0.1", System.Threading.ThreadPriority priority = System.Threading.ThreadPriority.Normal) {
         JavaOpenMacroCommunicationProcess p= new JavaOpenMacroCommunicationProcess(ip, port, priority);
         shortcut = new JavaOMI(p);
         return p;

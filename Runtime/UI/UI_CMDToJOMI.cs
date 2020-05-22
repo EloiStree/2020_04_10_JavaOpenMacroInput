@@ -12,6 +12,8 @@ public class UI_CMDToJOMI : MonoBehaviour
     
 
 
+
+
     public void OpenExe(string applicationNameWithExe)
     {
         foreach (var item in m_targets.GetJavaOMISelected())
@@ -108,5 +110,37 @@ public class UI_CMDToJOMI : MonoBehaviour
     {
         foreach (var item in m_targets.GetJavaOMISelected()) { JavaOMI.Window.GoToUserScreenshots(item); };
     }
+    public void GoToControlPanel()
+    {
+        foreach (var item in m_targets.GetJavaOMISelected()) { JavaOMI.Window.GoToControlPanel(item); };
+    }
+    public void OpenControlCommandDocumentation()
+    {
+        foreach (var item in m_targets.GetJavaOMISelected()) {
+            item.OpenUrl("https://ss64.com/nt/");
+        };
 
+        
+    }
+    //https://www.digitaltrends.com/computing/how-to-use-command-prompt/
+    public void OpenControlPanel()
+    {
+        //https://www.tenforums.com/tutorials/86339-list-commands-open-control-panel-items-windows-10-a.html
+        //https://www.lifewire.com/command-line-commands-for-control-panel-applets-2626060
+        ControlPanelEnum enumPanel = ControlPanelEnum.Hotspot; 
+        foreach (var item in m_targets.GetJavaOMISelected())
+        {
+            switch (enumPanel) {
+                case ControlPanelEnum.Hotspot: 
+                JavaOMI.Window.GoToUserScreenshots(item);
+                    break;
+
+                default: break;
+            }
+        };
+    }
+
+
+
+   
 }
