@@ -1,0 +1,4 @@
+[submodule "Contact"]
+	path = Contact
+	url = https://github.com/EloiStree/2020_05_20_PackSubModule_Contact.git
+        ignore = dirty
