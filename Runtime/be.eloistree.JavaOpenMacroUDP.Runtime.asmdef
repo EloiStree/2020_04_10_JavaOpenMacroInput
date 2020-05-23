@@ -1,7 +1,8 @@
 {
     "name": "JavaOpenMacroUDP",
     "references": [
-        "UnityDirectoryStorageUtility"
+        "UnityDirectoryStorageUtility",
+        "UnicodeInUnity"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
