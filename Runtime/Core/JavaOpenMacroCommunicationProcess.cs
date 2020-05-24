@@ -345,7 +345,7 @@ namespace JavaOpenMacroInput {
             }
             public static IEnumerator WindowSearchAndValidate(JavaOMI item, string toSearch)
             {
-                item.SendShortcutCommands("window↕");
+                item.Keyboard(JavaKeyEvent.VK_WINDOWS);
                 yield return new WaitForSeconds(0.5f);
                 item.PastText(toSearch);
                 yield return new WaitForSeconds(0.5f);

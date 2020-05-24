@@ -9,9 +9,15 @@ public class UI_CMDToJOMI : MonoBehaviour
     public UI_ServerDropdownJavaOMI m_targets;
 
 
-    
 
 
+    public void SearchAndValidate(string text) {
+
+        foreach (var item in m_targets.GetJavaOMISelected())
+        {
+            JavaOmiCoroutine.Start( JavaOMI.Window.WindowSearchAndValidate(item, text));
+        }
+    }
 
 
     public void OpenExe(string applicationNameWithExe)

@@ -10,15 +10,11 @@ public class UIToRunningJavaOMI : MonoBehaviour
     
 
 
-    public void StrokeKey(string vk_key) { 
-    
-    }
     public void StrokeKey(JavaKeyEvent key) {
         foreach (JavaOMI device in m_serverSelected.GetJavaOMISelected())
         {
             device.Keyboard(key);
         }
-
     }
 
     public void Past(string text) {
@@ -28,15 +24,15 @@ public class UIToRunningJavaOMI : MonoBehaviour
             device.PastText(text,out guaranti);
         }
     }
-    public void PlayMusic() {
-        foreach (JavaOMI device in m_serverSelected.GetJavaOMISelected())
-        {
-            device.Keyboard(JavaKeyEvent.VK_PAUSE);
-            device.Keyboard(JavaKeyEvent.VK_PRINTSCREEN);
+    //public void PlayMusic() {
+    //    foreach (JavaOMI device in m_serverSelected.GetJavaOMISelected())
+    //    {
+    //        device.Keyboard(JavaKeyEvent.VK_PAUSE);
+    //        device.Keyboard(JavaKeyEvent.VK_PRINTSCREEN);
 
-            device.Keyboard(JavaKeyEvent.VK_WINDOWS);
-        }
-    }
+    //        device.Keyboard(JavaKeyEvent.VK_WINDOWS);
+    //    }
+    //}
     //public void Demo_CmdCommit() {
     //    foreach (JavaOMI device in m_serverSelected.GetJavaOMISelected())
     //    {

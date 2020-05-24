@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -17,8 +18,35 @@ public class UI_DropdownToString : MonoBehaviour
     public class NameToPush {
         public string m_name="";
         public string m_toPush="";
+
+        public NameToPush(string name, string command)
+        {
+            m_name = name;m_toPush = command;
+        }
     }
-    
+    public void SetNameAndPushFromText(string text)
+    {
+        string[] tokens = text.Split('\n');
+        SetNameAndPushWith(tokens, tokens);
+    }
+
+    public void SetNameAndPushWith(string[] options)
+    {
+        SetNameAndPushWith(options, options);
+    }
+    public void SetNameAndPushWith(string[] options , string[] cmds)
+    {
+        if (options.Length != cmds.Length)
+            throw new ArgumentException("Option and Cmd lenght must be the same.");
+        m_linked.ClearOptions();
+        m_linked.AddOptions(options.ToList());
+        m_canBePush = new NameToPush[options.Length];
+        for (int i = 0; i < options.Length; i++)
+        {
+            m_canBePush[i] = new NameToPush(options[i], cmds[i]);
+        }
+      }
+
     void OnEnable()
     {
         m_linked.ClearOptions();
@@ -49,7 +77,7 @@ public class UI_DropdownToString : MonoBehaviour
         m_canBePush = new NameToPush[str.Count];
         for (int i = 0; i < str.Count; i++)
         {
-            m_canBePush[i] = new NameToPush() { m_name = str[i], m_toPush=str[i]+"↕" };
+            m_canBePush[i] = new NameToPush(str[i], str[i] + "↕") ;
         }
     }
 }
