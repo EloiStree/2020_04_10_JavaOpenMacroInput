@@ -144,9 +144,11 @@ public class UI_ConfigServerOMI : MonoBehaviour, I_UseHarddriveSave
         PreferenceSave toLoad = new PreferenceSave();
         
         string loaded = UnityDirectoryStorage.LoadFile("JavaOMI", m_prefId + ".txt", saveOnharddrive);
-        if (loaded == "") 
+        if (loaded == null || loaded == "" ) 
             return;
         toLoad = JsonUtility.FromJson<PreferenceSave>(loaded);
+        if (toLoad == null )
+            return;
 
         m_autoStart.isOn= toLoad.m_autoStart ;
         m_name.text = toLoad.m_threadName;

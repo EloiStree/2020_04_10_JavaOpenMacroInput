@@ -62,9 +62,10 @@ public class UI_LoopAndEditToJOMI : MonoBehaviour
     public void StartListening()
     {
         m_loopTime.onValueChanged.RemoveListener(ChangeLoopTime);
+        m_loopTime.onValueChanged.AddListener(ChangeLoopTime);
     }
     public void StopListening() {
-        m_loopTime.onValueChanged.AddListener(ChangeLoopTime);
+        m_loopTime.onValueChanged.RemoveListener(ChangeLoopTime);
     }
 
     public void ChangeLoopTime(string arg0)
