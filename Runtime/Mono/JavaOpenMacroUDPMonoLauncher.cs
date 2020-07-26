@@ -18,7 +18,7 @@ namespace JavaOpenMacroInput
         public System.Threading.ThreadPriority m_threadPrioity = System.Threading.ThreadPriority.Normal;
         public bool m_autoStart = true;
         [Header("Debug")]
-        public int m_leftToSend = 0;
+        public long m_leftToSend = 0;
         public string m_lastSend;
         [TextArea(1, 5)]
         public string m_exceptionCatch;
@@ -37,7 +37,7 @@ namespace JavaOpenMacroInput
         }
         public void Update()
         {
-            m_leftToSend = m_process.GetLeftMessagesToSend();
+            m_leftToSend = m_process.GetMessagesInQueue();
             m_lastSend = m_process.GetLastSendMessage();
             m_exceptionCatch = m_process.GetLastSendMessage();
         }

@@ -36,6 +36,13 @@ public class UI_ConfigServerOMI : MonoBehaviour, I_UseHarddriveSave
         int.TryParse(m_port.text, out port);
         return port;
     }
+    public long m_messageInQueue;
+
+    private void Update()
+    {
+        m_messageInQueue= m_deviceTarget.GetMesssageInQueue();
+
+    }
 
     void OnValidate() {
 

@@ -28,6 +28,8 @@ namespace JavaOpenMacroInput {
                  SendRawCommand("clipboard:cut");
         }
 
+      
+
         public void ImageUrlToClipboard(string url)
         {
             SendRawCommand("img2clip:"+ url);
@@ -47,6 +49,11 @@ namespace JavaOpenMacroInput {
                 SendShortcutCommands("Ctrl↓ C↕ Ctrl↑");
             else
                 SendRawCommand("clipboard:copy");
+        }
+
+        public long GetMesssageInQueue()
+        {
+            return m_linkedProcessUse.GetMessagesInQueue();
         }
 
         public delegate void OnRunningNamedThreadEvent(string runningThreadName);
@@ -539,7 +546,13 @@ namespace JavaOpenMacroInput {
 
         m_linkedProcessUse.SendMoveMousePosition(x,y);
     }
-    public void MouseClick(JavaMouseButton button, PressType press = PressType.Stroke)
+
+        public void MouseMoveInPourcent(float x, float y)
+        {
+            m_linkedProcessUse.SendMoveMousePositionInPourcent(x, y);
+        }
+
+        public void MouseClick(JavaMouseButton button, PressType press = PressType.Stroke)
     {
         m_linkedProcessUse.Send(button, press );
 
@@ -651,8 +664,10 @@ public class JavaOpenMacroCommunicationProcess
         private string m_locker="";
     private string m_lastSend;
     private string m_lastExceptionCatch;
+        public long m_messagesInQueue;
+        public long GetMessagesInQueue() { return m_messagesInQueue; }
 
-    public int GetLeftMessagesToSend() { return m_toSend.Count; }
+    //public int GetLeftMessagesToSend() { return m_toSend.Count; }
     public string GetLastSendMessage() { return m_lastSend; }
     public string GetLastExceptionCatch() { return m_lastExceptionCatch; }
     public void KillJavaThreadWhenDone()
@@ -704,14 +719,20 @@ public class JavaOpenMacroCommunicationProcess
                 return;
             m_toSend.Enqueue("wh:" + value);
     }
-    public void SendMoveMousePosition(int x, int y)
+        public void SendMoveMousePosition(int x, int y)
         {
             if (m_isInPause)
                 return;
             m_toSend.Enqueue("mm:" + x + ":" + y);
-    }
+        }
+        public void SendMoveMousePositionInPourcent(float xPct, float yPct)
+        {
+            if (m_isInPause)
+                return;
+            m_toSend.Enqueue(string.Format("mm:{0:0.00000}%:{1:0.00000}%" , xPct , yPct));
+        }
 
-    public void SendShortcuts(string text)
+        public void SendShortcuts(string text)
         {
             if (m_isInPause)
                 return;
@@ -732,23 +753,26 @@ public class JavaOpenMacroCommunicationProcess
         Byte[] sendBytes = new Byte[0];
         while (m_keepThreadAlive)
         {
-            if (m_toSend.Count > 0)
-            {
-                string msg =  m_toSend.Dequeue();
-                m_lastSend =  msg;
-                sendBytes = Encoding.UTF8.GetBytes(m_locker + msg);
-                try
+                if (m_toSend.Count > 0)
                 {
-                    if(!m_isInPause)
-                    udpClient.Send(sendBytes, sendBytes.Length);
+                    string msg = m_toSend.Dequeue();
+                    m_lastSend = msg;
+                    sendBytes = Encoding.UTF8.GetBytes(m_locker + msg);
+                    try
+                    {
+                        if (!m_isInPause)
+                            udpClient.Send(sendBytes, sendBytes.Length);
+                    }
+                    catch (Exception e)
+                    {
+                        m_lastExceptionCatch = e.ToString();
+                    }
+                    Thread.Sleep(1);
+                    m_messagesInQueue = m_toSend.Count;
                 }
-                catch (Exception e)
-                {
-                    m_lastExceptionCatch = e.ToString();
-                }
+                else { 
                 Thread.Sleep(5);
-            }
-            Thread.Sleep(50);
+                }
         }
         if (m_killJavaThreadWhenFinish)
             sendBytes = Encoding.UTF8.GetBytes(m_locker+"stop");
